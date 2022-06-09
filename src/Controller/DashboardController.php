@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AccueilController extends AbstractController
+class DashboardController extends AbstractController
 {
-    #[Route('/', name: 'app_accueil')]
+    #[Route('/dashboard', name: 'app_dashboard')]
     public function index(): Response
     {
-        return $this->render('accueil/index.html.twig', [
-            'controller_name' => 'AccueilController',
+        return $this->render('dashboard/index.html.twig', [
+            'controller_name' => 'DashboardController',
         ]);
     }
 }
