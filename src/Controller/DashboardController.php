@@ -38,11 +38,12 @@ class DashboardController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $asin = $form->getData()['asin'];
+            $subCat = $form->getData()['SubCategory'];
             if ($form->get('add')->isClicked()){
-                $this->scraperAmazonProduct($asin);
+                $this->scraperAmazonProduct($asin, $subCat);
             }
             if ($form->get('update')->isClicked()){
-                $this->updateAmazonProduct($asin);
+                $this->updateAmazonProduct($asin, $subCat);
             }
         }
         return $this->render('dashboard/admin_product.html.twig', [
@@ -53,7 +54,7 @@ class DashboardController extends AbstractController
 
 
     //Scrap product with asin to persist into db
-    public function scraperAmazonProduct($asin){
+    public function scraperAmazonProduct($asin, $subCat){
 
         $ApiProduct = $this->AmazonApi->fetchAmazonProduct($asin);
 
@@ -72,13 +73,14 @@ class DashboardController extends AbstractController
         }
         $product->setLevel('best');
         $product->setImage($ApiProduct['product']['main_image']['link']);
+        $product->setSubcategory($subCat);
         $entityManager->persist($product);
         $entityManager->flush();
 
     }
 
     //update product with asin to persist into db
-    public function updateAmazonProduct($asin){
+    public function updateAmazonProduct($asin, $subCat){
         $ApiProduct = $this->AmazonApi->fetchAmazonProduct($asin);
         $entityManager = $this->doctrine->getManager();
 
@@ -93,6 +95,7 @@ class DashboardController extends AbstractController
         $product->setDescription($ApiProduct['product']['description']);
         $product->setLevel('best');
         $product->setImage($ApiProduct['product']['main_image']['link']);
+        $product->setSubcategory($subCat);
         $entityManager->persist($product);
         $entityManager->flush();
     }

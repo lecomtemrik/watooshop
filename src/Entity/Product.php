@@ -37,6 +37,10 @@ class Product
     #[ORM\Column(type: 'string', length: 255)]
     private $asin;
 
+    #[ORM\ManyToOne(targetEntity: SubCategory::class, inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $subcategory;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +138,18 @@ class Product
     public function setAsin(string $asin): self
     {
         $this->asin = $asin;
+
+        return $this;
+    }
+
+    public function getSubcategory(): ?SubCategory
+    {
+        return $this->subcategory;
+    }
+
+    public function setSubcategory(?SubCategory $subcategory): self
+    {
+        $this->subcategory = $subcategory;
 
         return $this;
     }
