@@ -21,6 +21,10 @@ class SubCategory
     #[ORM\OneToMany(mappedBy: 'subcategory', targetEntity: Product::class)]
     private $products;
 
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'subCategories')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $category;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -69,6 +73,18 @@ class SubCategory
                 $product->setSubcategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
