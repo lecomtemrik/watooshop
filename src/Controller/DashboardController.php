@@ -71,7 +71,6 @@ class DashboardController extends AbstractController
         if (isset($ApiProduct['product']['description'])){
             $product->setDescription($ApiProduct['product']['description']);
         }
-        $product->setLevel('best');
         $product->setImage($ApiProduct['product']['main_image']['link']);
         $product->setSubcategory($subCat);
         $entityManager->persist($product);
@@ -93,7 +92,6 @@ class DashboardController extends AbstractController
 
         $product->setAlink('empty');
         $product->setDescription($ApiProduct['product']['description']);
-        $product->setLevel('best');
         $product->setImage($ApiProduct['product']['main_image']['link']);
         $product->setSubcategory($subCat);
         $entityManager->persist($product);

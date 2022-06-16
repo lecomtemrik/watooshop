@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Rank;
 use App\Entity\SubCategory;
 use phpDocumentor\Reflection\Types\Collection;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -17,6 +18,11 @@ class AsinFormType extends AbstractType
     {
         $builder
             ->add('asin', TextType::class)
+            ->add('Rank',EntityType::class, [
+                'class' => Rank::class,
+                'choice_label' => 'title',
+                'label' => 'Rang'
+            ])
             ->add('SubCategory',EntityType::class, [
                 'class' => SubCategory::class,
                 'choice_label' => 'title',

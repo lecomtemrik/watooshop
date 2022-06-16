@@ -25,9 +25,6 @@ class Product
     #[ORM\Column(type: 'string', length: 255)]
     private $alink;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $level;
-
     #[ORM\Column(type: 'float')]
     private $rating;
 
@@ -40,6 +37,10 @@ class Product
     #[ORM\ManyToOne(targetEntity: SubCategory::class, inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private $subcategory;
+
+    #[ORM\ManyToOne(targetEntity: Rank::class, inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $rank;
 
     public function getId(): ?int
     {
@@ -94,18 +95,6 @@ class Product
         return $this;
     }
 
-    public function getLevel(): ?string
-    {
-        return $this->level;
-    }
-
-    public function setLevel(string $level): self
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
     public function getRating(): ?float
     {
         return $this->rating;
@@ -150,6 +139,18 @@ class Product
     public function setSubcategory(?SubCategory $subcategory): self
     {
         $this->subcategory = $subcategory;
+
+        return $this;
+    }
+
+    public function getRank(): ?Rank
+    {
+        return $this->rank;
+    }
+
+    public function setRank(?Rank $rank): self
+    {
+        $this->rank = $rank;
 
         return $this;
     }
