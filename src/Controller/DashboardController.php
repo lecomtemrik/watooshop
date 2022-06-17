@@ -39,11 +39,12 @@ class DashboardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $asin = $form->getData()['asin'];
             $subCat = $form->getData()['SubCategory'];
+            $rank = $form->getData()['Rank'];
             if ($form->get('add')->isClicked()){
-                $this->scraperAmazonProduct($asin, $subCat);
+                $this->scraperAmazonProduct($asin, $subCat, $rank);
             }
             if ($form->get('update')->isClicked()){
-                $this->updateAmazonProduct($asin, $subCat);
+                $this->updateAmazonProduct($asin, $subCat, $rank);
             }
         }
         return $this->render('dashboard/admin_product.html.twig', [
@@ -54,7 +55,7 @@ class DashboardController extends AbstractController
 
 
     //Scrap product with asin to persist into db
-    public function scraperAmazonProduct($asin, $subCat){
+    public function scraperAmazonProduct($asin, $subCat, $rank){
 
         $ApiProduct = $this->AmazonApi->fetchAmazonProduct($asin);
 
@@ -73,13 +74,14 @@ class DashboardController extends AbstractController
         }
         $product->setImage($ApiProduct['product']['main_image']['link']);
         $product->setSubcategory($subCat);
+        $product->setRank($rank);
         $entityManager->persist($product);
         $entityManager->flush();
 
     }
 
     //update product with asin to persist into db
-    public function updateAmazonProduct($asin, $subCat){
+    public function updateAmazonProduct($asin, $subCat, $rank){
         $ApiProduct = $this->AmazonApi->fetchAmazonProduct($asin);
         $entityManager = $this->doctrine->getManager();
 
@@ -94,6 +96,7 @@ class DashboardController extends AbstractController
         $product->setDescription($ApiProduct['product']['description']);
         $product->setImage($ApiProduct['product']['main_image']['link']);
         $product->setSubcategory($subCat);
+        $product->setRank($rank);
         $entityManager->persist($product);
         $entityManager->flush();
     }
