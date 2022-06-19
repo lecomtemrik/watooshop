@@ -65,12 +65,18 @@ class DashboardController extends AbstractController
         $product->setTitle($ApiProduct['product']['title']);
 
         $product->setAsin($asin);
-        $product->setRating($ApiProduct['product']['rating']);
+        if (isset($ApiProduct['product']['rating'])){
+            $product->setRating($ApiProduct['product']['rating']);
+        }else {
+            $product->setRating(0);
+        }
         $product->setPrice($ApiProduct['product']['buybox_winner']['price']['value']);
 
         $product->setAlink('empty');
         if (isset($ApiProduct['product']['description'])){
             $product->setDescription($ApiProduct['product']['description']);
+        }else {
+            $product->setDescription('nodesc');
         }
         $product->setImage($ApiProduct['product']['main_image']['link']);
         $product->setSubcategory($subCat);
