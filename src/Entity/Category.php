@@ -22,7 +22,7 @@ class Category
     private $subCategories;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $path;
+    private $pathCategory;
 
     public function __construct()
     {
@@ -76,14 +76,14 @@ class Category
         return $this;
     }
 
-    public function getPath(): ?string
+    public function getPathCategory(): ?string
     {
-        return $this->path;
+        return $this->pathCategory;
     }
 
-    public function setPath(string $path): self
+    public function setPathCategory(string $pathCategory): self
     {
-        $this->path = $path;
+        $this->pathCategory = $pathCategory;
 
         return $this;
     }

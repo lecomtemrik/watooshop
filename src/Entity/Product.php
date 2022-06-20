@@ -43,7 +43,7 @@ class Product
     private $rank;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $path;
+    private $pathProduct;
 
     public function getId(): ?int
     {
@@ -158,14 +158,14 @@ class Product
         return $this;
     }
 
-    public function getPath(): ?string
+    public function getPathProduct(): ?string
     {
-        return $this->path;
+        return $this->pathProduct;
     }
 
-    public function setPath(string $path): self
+    public function setPathProduct(string $pathProduct): self
     {
-        $this->path = $path;
+        $this->pathProduct = $pathProduct;
 
         return $this;
     }
