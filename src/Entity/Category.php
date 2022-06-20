@@ -21,6 +21,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: SubCategory::class)]
     private $subCategories;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $path;
+
     public function __construct()
     {
         $this->subCategories = new ArrayCollection();
@@ -69,6 +72,18 @@ class Category
                 $subCategory->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function setPath(string $path): self
+    {
+        $this->path = $path;
 
         return $this;
     }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 use App\Repository\RankRepository;
+use App\Repository\SubCategoryRepository;
 use App\Service\AmazonApi;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,13 +25,10 @@ class ProductController extends AbstractController
 
     }
 
-    #[Route('/product', name: 'app_product')]
+    #[Route('/products', name: 'products')]
     public function index(ProductRepository $productRepository): Response
     {
         $products = $productRepository->findAll();
-        foreach ($products as $product) {
-            dump($product->getSubcategory()->getTitle());
-        }
 
         return $this->render('product/index.html.twig', [
             'controller_name' => 'ProductController',
@@ -38,6 +36,30 @@ class ProductController extends AbstractController
         ]);
 
     }
+
+    #[Route('{category}/{subcategory}/{product}', name: 'product')]
+    public function product(ProductRepository $productRepository): Response
+    {
+        $products = $productRepository->findAll();
+
+        return $this->render('product/index.html.twig', [
+            'controller_name' => 'ProductController',
+            'products' => $products,
+        ]);
+
+    }
+
+//    #[Route('/{category}/{subcategory}', name: 'subcat')]
+//    public function subCat(SubCategoryRepository $subCategoryRepository): Response
+//    {
+//        $subcats = $subCategoryRepository->findBy(['title']);
+//
+//        return $this->render('product/index.html.twig', [
+//            'controller_name' => 'ProductController',
+//            'products' => $products,
+//        ]);
+//
+//    }
 
 
     #[Route('/bestsellers', name: 'best_sellers')]

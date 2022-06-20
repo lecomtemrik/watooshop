@@ -42,6 +42,9 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private $rank;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $path;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -151,6 +154,18 @@ class Product
     public function setRank(?Rank $rank): self
     {
         $this->rank = $rank;
+
+        return $this;
+    }
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function setPath(string $path): self
+    {
+        $this->path = $path;
 
         return $this;
     }
