@@ -31,35 +31,34 @@ class ProductController extends AbstractController
         $products = $productRepository->findAll();
 
         return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
             'products' => $products,
         ]);
 
     }
 
-    #[Route('{category}/{subcategory}/{product}', name: 'product')]
-    public function product(ProductRepository $productRepository): Response
+    #[Route('/{pathCategory}/{pathSubCategory}/{pathProduct}', name: 'product')]
+    public function product(ProductRepository $productRepository, string $pathProduct): Response
     {
-        $products = $productRepository->findAll();
+        $products = $productRepository->findBy(['pathProduct'=> $pathProduct]);
 
         return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
             'products' => $products,
         ]);
 
     }
 
-//    #[Route('/{category}/{subcategory}', name: 'subcat')]
-//    public function subCat(SubCategoryRepository $subCategoryRepository): Response
-//    {
-//        $subcats = $subCategoryRepository->findBy(['title']);
-//
-//        return $this->render('product/index.html.twig', [
-//            'controller_name' => 'ProductController',
-//            'products' => $products,
-//        ]);
-//
-//    }
+    #[Route('/{pathCategory}/{pathSubCategory}', name: 'subcat')]
+    public function subCat(SubCategoryRepository $subCategoryRepository, string $pathSubCategory): Response
+    {
+        $subCategory = $subCategoryRepository->findBy(['pathSubCategory'=> $pathSubCategory]);
+        foreach ($subCategory as $subCat){
+            $products = $subCat->getProducts();
+        }
+        return $this->render('product/index.html.twig', [
+            'products' => $products,
+        ]);
+
+    }
 
 
     #[Route('/bestsellers', name: 'best_sellers')]
