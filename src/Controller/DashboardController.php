@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/dashboard')]
 class DashboardController extends AbstractController
 {
     private ManagerRegistry $doctrine;
@@ -27,7 +28,7 @@ class DashboardController extends AbstractController
 
     }
 
-    #[Route('/dashboard', name: 'app_dashboard')]
+    #[Route('/', name: 'app_dashboard')]
     public function index(): Response
     {
         return $this->render('dashboard/index.html.twig', [
