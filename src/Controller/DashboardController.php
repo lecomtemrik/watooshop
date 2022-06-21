@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\SubCategory;
 use App\Form\AsinFormType;
+use App\Form\CategoryFormType;
+use App\Form\SubCategoryFormType;
 use App\Service\AmazonApi;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +35,48 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    #[Route('/adminProduct', name: 'admin_product')]
+    #[Route('/add-category', name: 'add_category')]
+    public function addCategory(Request $request): Response
+    {
+        $form = $this->createForm(CategoryFormType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->doctrine->getManager();
+            $category = new Category();
+            $category->setTitle($form->getData()->getTitle());
+            $category->setPathCategory($form->getData()->getPathCategory());
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+        }
+        return $this->render('dashboard/admin_product.html.twig', [
+            'Form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/add-subcategory', name: 'add_subcategory')]
+    public function addSubCategory(Request $request): Response
+    {
+        $form = $this->createForm(SubCategoryFormType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->doctrine->getManager();
+            $subCategory = new SubCategory();
+            $subCategory->setTitle($form->getData()->getTitle());
+            $subCategory->setPathSubCategory($form->getData()->getPathSubCategory());
+            $subCategory->setCategory($form->getData()->getCategory());
+            $entityManager->persist($subCategory);
+            $entityManager->flush();
+
+        }
+        return $this->render('dashboard/admin_product.html.twig', [
+            'Form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/add-product', name: 'add_product')]
     public function addProduct(Request $request): Response
     {
         $form = $this->createForm(AsinFormType::class);
@@ -48,8 +93,7 @@ class DashboardController extends AbstractController
             }
         }
         return $this->render('dashboard/admin_product.html.twig', [
-            'controller_name' => 'DashboardController',
-            'asinForm' => $form->createView(),
+            'Form' => $form->createView(),
         ]);
     }
 
