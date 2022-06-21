@@ -8,6 +8,9 @@ use App\Entity\SubCategory;
 use App\Form\AsinFormType;
 use App\Form\CategoryFormType;
 use App\Form\SubCategoryFormType;
+use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
+use App\Repository\SubCategoryRepository;
 use App\Service\AmazonApi;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,6 +39,19 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    #[Route('/category-list', name: 'category_list')]
+    public function categoryList(Request $request, CategoryRepository $categoryRepository): Response
+    {
+
+        $categories = $categoryRepository->findAll();
+//        Permet de retourner la liste des key
+//        $keys = array_keys((array)$categories[0]);
+
+        return $this->render('dashboard/category_list.html.twig', [
+            'categories' => $categories,
+        ]);
+    }
+
     #[Route('/add-category', name: 'add_category')]
     public function addCategory(Request $request): Response
     {
@@ -53,6 +69,15 @@ class DashboardController extends AbstractController
         }
         return $this->render('dashboard/admin_product.html.twig', [
             'Form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/subcategory-list', name: 'subcategory_list')]
+    public function subcategoryList(Request $request, SubCategoryRepository $subCategoryRepository): Response
+    {
+        $subCategories = $subCategoryRepository->findAll();
+        return $this->render('dashboard/subcategory_list.html.twig', [
+            'subcategories' => $subCategories,
         ]);
     }
 
@@ -74,6 +99,15 @@ class DashboardController extends AbstractController
         }
         return $this->render('dashboard/admin_product.html.twig', [
             'Form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/product-list', name: 'product_list')]
+    public function productList(Request $request, ProductRepository $productRepository): Response
+    {
+        $products = $productRepository->findAll();
+        return $this->render('dashboard/product_list.html.twig', [
+            'products' => $products,
         ]);
     }
 

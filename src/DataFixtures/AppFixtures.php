@@ -127,25 +127,25 @@ class AppFixtures extends Fixture
         $subCategorySourisGaming = new SubCategory();
         $subCategorySourisGaming ->setTitle("souris gaming");
         $subCategorySourisGaming ->setPathSubCategory("souris-gaming");
-        $subCategorySourisGaming ->setCategory($category2);
+        $subCategorySourisGaming ->setCategory($category3);
         $manager->persist($subCategorySourisGaming);
 
         $subCategorySourisBureau = new SubCategory();
         $subCategorySourisBureau ->setTitle("souris bureau");
         $subCategorySourisBureau ->setPathSubCategory("souris-bureau");
-        $subCategorySourisBureau ->setCategory($category2);
+        $subCategorySourisBureau ->setCategory($category3);
         $manager->persist($subCategorySourisBureau);
 
         $subCategorySourisansFilGaming = new SubCategory();
         $subCategorySourisansFilGaming ->setTitle("souris sans fil gaming");
         $subCategorySourisansFilGaming ->setPathSubCategory("souris-sans-fil-gaming");
-        $subCategorySourisansFilGaming ->setCategory($category2);
+        $subCategorySourisansFilGaming ->setCategory($category3);
         $manager->persist($subCategorySourisansFilGaming);
 
         $subCategorySourisansFilBureau = new SubCategory();
         $subCategorySourisansFilBureau ->setTitle("souris sans fil bureau");
         $subCategorySourisansFilBureau ->setPathSubCategory("souris-sans-fil-bureau");
-        $subCategorySourisansFilBureau ->setCategory($category2);
+        $subCategorySourisansFilBureau ->setCategory($category3);
         $manager->persist($subCategorySourisansFilBureau);
 
 //        https://www.boulanger.com/
