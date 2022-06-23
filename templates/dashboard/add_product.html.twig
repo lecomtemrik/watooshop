@@ -1,0 +1,43 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    {{ form_start(Form) }}
+
+    <div>
+        <label for="price" class="block text-sm font-medium text-gray-700">{{ form_label(Form.asin, 'ASIN') }}</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+            {{ form_widget(Form.asin, {'attr': {'class': 'focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md'}}) }}
+        </div>
+    </div>
+
+    <div>
+        <label for="price" class="block text-sm font-medium text-gray-700">{{ form_label(Form.pathCategory, 'Chemin URL') }}</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+            {{ form_widget(Form.pathCategory, {'attr': {'class': 'focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md'}}) }}
+        </div>
+    </div>
+
+    <div>
+        <label for="price" class="block text-sm font-medium text-gray-700">{{ form_label(Form.Rank, 'Rang') }}</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+            {{ form_widget(Form.Rank, {'attr': {'class': 'focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md'}}) }}
+        </div>
+    </div>
+
+    <div>
+        <label for="price" class="block text-sm font-medium text-gray-700">{{ form_label(Form.SubCategory, 'Sous catégories') }}</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+            {{ form_widget(Form.SubCategory, {'attr': {'class': 'focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md'}}) }}
+        </div>
+    </div>
+
+    <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        {{ form_widget(Form.update, {'attr': {'class': 'mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-600 text-base font-medium text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-600 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'}}) }}
+        {{ form_widget(Form.add, {'attr': {'class': 'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 sm:ml-3 sm:w-auto sm:text-sm'}}) }}
+    </div>
+
+    {{ form_end(Form) }}
+
+{% endblock %}

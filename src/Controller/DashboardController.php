@@ -67,7 +67,7 @@ class DashboardController extends AbstractController
             $entityManager->flush();
 
         }
-        return $this->render('dashboard/admin_product.html.twig', [
+        return $this->render('dashboard/add_category.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
@@ -97,7 +97,7 @@ class DashboardController extends AbstractController
             $entityManager->flush();
 
         }
-        return $this->render('dashboard/admin_product.html.twig', [
+        return $this->render('dashboard/add_subcategory.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
@@ -127,7 +127,7 @@ class DashboardController extends AbstractController
                 $this->updateAmazonProduct($asin, $subCat, $rank);
             }
         }
-        return $this->render('dashboard/admin_product.html.twig', [
+        return $this->render('dashboard/add_product.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
