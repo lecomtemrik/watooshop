@@ -111,7 +111,7 @@
                 <!-- Sidebar links -->
                 <nav aria-label="Main" class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
                     <!-- Dashboards links -->
-                    <div x-data="{ isActive: false, open: false}">
+                    <div x-data="{ isActive: true, open: true}">
                         <!-- active & hover classes 'bg-blue-100 dark:bg-blue-600' -->
                         <a
                                 href="#"
@@ -157,11 +157,11 @@
                             <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                             <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
                             <a
-                                    href="#"
+                                    href="{{ path('app_dashboard') }}"
                                     role="menuitem"
                                     class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
                             >
-                                Default
+                                Données
                             </a>
                         </div>
                     </div>
@@ -190,8 +190,7 @@
                               stroke-linecap="round"
                               stroke-linejoin="round"
                               stroke-width="2"
-                              d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                      />
+                              d="M16.227,16.672c0,0.49-0.396,0.889-0.889,0.889H2.883c-0.491,0-0.889-0.398-0.889-0.889V5.107c0-0.491,0.398-0.89,0.889-0.89h7.562V3.328H2.883c-0.982,0-1.779,0.796-1.779,1.779v11.565c0,0.982,0.796,1.779,1.779,1.779h12.455c0.982,0,1.779-0.797,1.779-1.779V10h-0.891V16.672z M15.338,1.549c-1.965,0-3.559,1.593-3.559,3.558c0,1.966,1.594,3.558,3.559,3.558s3.559-1.592,3.559-3.558C18.896,3.142,17.303,1.549,15.338,1.549z M15.338,7.776c-1.475,0-2.668-1.195-2.668-2.669c0-1.474,1.193-2.669,2.668-2.669s2.668,1.195,2.668,2.669C18.006,6.581,16.812,7.776,15.338,7.776z"                      />
                     </svg>
                   </span>
                             <span class="ml-2 text-sm"> Catégorie </span>
@@ -295,7 +294,7 @@
                     </div>
 
                     <!-- Pages links -->
-                    <div x-data="{ isActive: true, open: open }">
+                    <div x-data="{ isActive: false, open: false }">
                         <!-- active classes 'bg-blue-100 dark:bg-blue-600' -->
                         <a
                                 href="#"
@@ -318,7 +317,7 @@
                               stroke-linecap="round"
                               stroke-linejoin="round"
                               stroke-width="2"
-                              d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                              d="M6 2L3 6v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.8 6h16.4M16 10a4 4 0 1 1-8 0"
                       />
                     </svg>
                   </span>
@@ -343,7 +342,7 @@
                             <a
                                     href="{{ path('product_list') }}"
                                     role="menuitem"
-                                    class="block p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-700"
+                                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-400"
                             >
                                 Liste
                             </a>
@@ -356,6 +355,80 @@
                             </a>
                         </div>
                     </div>
+
+                    <!-- Pages links -->
+                    <div x-data="{ isActive: false, open: false }">
+                        <!-- active classes 'bg-blue-100 dark:bg-blue-600' -->
+                        <a
+                                href="#"
+                                @click="$event.preventDefault(); open = !open"
+                                class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600"
+                                :class="{ 'bg-blue-100 dark:bg-blue-600': isActive || open }"
+                                role="button"
+                                aria-haspopup="true"
+                                :aria-expanded="(open || isActive) ? 'true' : 'false'"
+                        >
+                  <span aria-hidden="true">
+                    <svg
+                            class="w-5 h-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                    >
+
+                        <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10,10.9c2.373,0,4.303-1.932,4.303-4.306c0-2.372-1.93-4.302-4.303-4.302S5.696,4.223,5.696,6.594C5.696,8.969,7.627,10.9,10,10.9z M10,3.331c1.801,0,3.266,1.463,3.266,3.263c0,1.802-1.465,3.267-3.266,3.267c-1.8,0-3.265-1.465-3.265-3.267C6.735,4.794,8.2,3.331,10,3.331z">
+
+                        </path>
+                        <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10,12.503c-4.418,0-7.878,2.058-7.878,4.685c0,0.288,0.231,0.52,0.52,0.52c0.287,0,0.519-0.231,0.519-0.52c0-1.976,3.132-3.646,6.84-3.646c3.707,0,6.838,1.671,6.838,3.646c0,0.288,0.234,0.52,0.521,0.52s0.52-0.231,0.52-0.52C17.879,14.561,14.418,12.503,10,12.503z">
+
+                        </path>
+
+                    </svg>
+                  </span>
+                            <span class="ml-2 text-sm"> Utilisateurs </span>
+                            <span aria-hidden="true" class="ml-auto">
+                    <!-- active class 'rotate-180' -->
+                    <svg
+                            class="w-4 h-4 transition-transform transform"
+                            :class="{ 'rotate-180': open }"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                        </a>
+                        <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Pages">
+                            <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                            <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                            <a
+                                    href="{{ path('user_list') }}"
+                                    role="menuitem"
+                                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-400"
+                            >
+                                Liste
+                            </a>
+                            <a
+                                    href="{{ path('app_register') }}"
+                                    role="menuitem"
+                                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                            >
+                                Ajouter
+                            </a>
+                        </div>
+                    </div>
+
                 </nav>
 
                 <!-- Sidebar footer -->
@@ -412,7 +485,7 @@
 
                     <!-- Brand -->
                     <a
-                            href="#"
+                            href="{{ path('app_dashboard') }}"
                             class="inline-block text-2xl font-bold tracking-wider text-blue-700 uppercase dark:text-light"
                     >
                         WatooShop Dashboard
@@ -578,7 +651,7 @@
                                     Settings
                                 </a>
                                 <a
-                                        href="#"
+                                        href="{{ path('app_logout') }}"
                                         role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
                                 >

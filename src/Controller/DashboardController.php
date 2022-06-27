@@ -11,6 +11,7 @@ use App\Form\SubCategoryFormType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\SubCategoryRepository;
+use App\Repository\UserRepository;
 use App\Service\AmazonApi;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -129,6 +130,15 @@ class DashboardController extends AbstractController
         }
         return $this->render('dashboard/add_product.html.twig', [
             'Form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/user-list', name: 'user_list')]
+    public function userList(Request $request, UserRepository $userRepository): Response
+    {
+        $users = $userRepository->findAll();
+        return $this->render('dashboard/user_list.html.twig', [
+            'users' => $users,
         ]);
     }
 

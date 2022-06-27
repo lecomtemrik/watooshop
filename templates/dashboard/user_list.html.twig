@@ -1,6 +1,6 @@
 {% extends 'dashboard/base.html.twig' %}
 
-{% block title %}Liste des sous catégories{% endblock %}
+{% block title %}Liste des utilisateurs{% endblock %}
 
 {% block body %}
 
@@ -13,29 +13,29 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-indigo-600 text-white uppercase text-sm leading-normal">
-                            <th class="py-3 px-6 text-left">Titre</th>
-                            <th class="py-3 px-6 text-left">Path</th>
-                            <th class="py-3 px-6 text-left">Categorie</th>
-                            <th class="py-3 px-6 text-left">Actions</th>
+                            <th class="py-3 px-6 text-left">Adresse email</th>
+                            <th class="py-3 px-6 text-left">rôle</th>
+                            <th class="py-3 px-6 text-left">Mot de passe</th>
+                            <th class="py-3 px-6 text-left">Action</th>
                         </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
-                        {% for subcategory in subcategories %}
+                        {% for user in users %}
 
                             <tr class="border-b border-gray-200 hover:bg-gray-100">
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
-                                        <span>{{ subcategory.title }}</span>
+                                        <span>{{ user.email }}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex items-center">
-                                        <span>{{ subcategory.pathSubCategory }}</span>
+                                        <span>{{ user.roles[0] }}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex items-center">
-                                        <span>{{ subcategory.category.title }}</span>
+                                        <span>{{ user.password }}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
