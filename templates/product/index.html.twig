@@ -4,123 +4,111 @@
 
 {% block body %}
 
-    {% for product in products %}
+<!-- component -->
+<style>
+    .text-xxs {
+        font-size: 0.70rem;
+        line-height: 0.90rem;
+    }
 
-        <!-- component -->
-        <style>
-            .text-xxs {
-                font-size: 0.70rem;
-                line-height: 0.90rem;
-            }
-
-            .rounded-xss {
-                border-radius: 2px !important;
-            }
-        </style>
+    .rounded-xss {
+        border-radius: 2px !important;
+    }
+</style>
 
 {#        https://tailwindcomponents.com/component/product-card-like-themeforest #}
 
-        <!-- MDI Icons -->
-        <link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" />
+<!-- MDI Icons -->
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" />
 
-        <!-- Product Card Container -->
-        <div class="flex flex-col items-center justify-center mt-32">
-            <!-- Product Card -->
-            <div class="flex flex-col shadow-md cursor-pointer w-96 hover:-translate-y-1 duration-300">
-                <!-- Preview -->
-                <div class="inline relative group h-48">
-                    <!-- Thumbnail -->
-                    <img class="absolute rounded-t object-cover h-full w-full"
-                         src="{{ product.image }}"
-                         alt="Product Preview" />
+<div class="flex flex-wrap" id="tabs-id">
+{#    <div class="w-6/12">#}
+    <div class="w-full">
+        <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-gray-600 bg-gray-100" onclick="changeAtiveTab(event,'tab-qualityprice')">
+                    <i class="fas fa-space-shuttle text-base mr-1"></i>  Qualité/Prix
+                </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestseller')">
+                    <i class="fas fa-cog text-base mr-1"></i>  Meilleure vente
+                </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestprice')">
+                    <i class="fas fa-briefcase text-base mr-1"></i>  Meilleur prix
+                </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestquality')">
+                    <i class="fas fa-briefcase text-base mr-1"></i>  Meilleur qualité
+                </a>
+            </li>
+        </ul>
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+            <div class="px-4 py-5 flex-auto">
+                <div class="tab-content tab-space">
 
-                    <!-- Hover Bar -->
-                    <div class="flex flex-row absolute justify-end
-                    h-16 w-full bottom-0 px-3 space-x-2
-                    bg-none opacity-0 group-hover:opacity-100
-                    group-hover:bg-gradient-to-t from-black/20 via-gray-800/20 to-transparent
-                    transition-all ease-in-out duration-200 delay-100">
-
-                        <!-- Add to Bookmarks Button -->
-                        <button class="bg-gray-50/10 rounded-full
-                        px-1 h-9 w-9 my-auto hover:bg-gray-50/20
-                        transition-colors duration-200">
-                            <i class="mdi mdi-playlist-plus text-xl text-gray-200
-                            hover:text-white transition-all duration-200"
-                               title="Add to Bookmarks"></i>
-                        </button>
-
-                        <!-- Add to Favorites Button -->
-                        <button class="bg-gray-50/10 rounded-full
-                        px-1 h-9 w-9 my-auto hover:bg-gray-50/20
-                        transition-colors duration-200">
-                            <i class="mdi mdi-heart text-xl text-gray-200 p-1
-                            hover:text-white transition-all duration-200"
-                               title="Add to Favorites"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Body -->
-                <div class="flex flex-col bg-white rounded-b p-3">
-                    <!-- Title -->
-                    <div class="text-sm font-semibold text-gray-900 hover:underline truncate">
-                        {{ product.title }}
-                    </div>
-
-                    <!-- Author - Category -->
-                    <div class="text-xxs text-gray-400 truncate mt-1">
-                        {{ product.description }}
-                    </div>
-
-                    <div class="text-xxs text-gray-400 truncate mt-1">
-                        {{ product.subCategory.title }}
-                    </div>
-                    <div class="text-xxs text-gray-400 truncate mt-1">
-                        {{ product.rank.title }}
-                    </div>
-
-                    <!-- Price -->
-                    <div class="text-sm text-gray-600 font-bold mt-4 mb-1">
-                        {{ product.price }} €
-                    </div>
-
-                    <!-- Body -->
-                    <div class="flex flex-row mt-2">
-                        <!-- Detail Column -->
-                        <div class="flex flex-col flex-auto">
-                            <!-- Rating -->
-                            <div class="flex flex-row group">
-                                <i class="mdi mdi-star text-xs text-amber-400
-                            hover:text-amber-500 transition-all duration-200"
-                                   title="Worst"></i>
-
-                                <i class="mdi mdi-star text-xs text-amber-400
-                            hover:text-amber-500 transition-all duration-200"
-                                   title="Bad"></i>
-
-                                <i class="mdi mdi-star text-xs text-amber-400
-                            hover:text-amber-500 transition-all duration-200"
-                                   title="Not Bad"></i>
-
-                                <i class="mdi mdi-star text-xs text-amber-400
-                            hover:text-amber-500 transition-all duration-200"
-                                   title="Good"></i>
-
-                                <i class="mdi mdi-star text-xs text-amber-400
-                            hover:text-amber-500 transition-all duration-200"
-                                   title="Awesome"></i>
-
-                                <div class="text-xxs text-gray-400 ml-1 hover:underline">
-                                    {{ product.rating }}
-                                </div>
-                            </div>
-
+                        <div class="block" id="tab-qualityprice">
+                            {% for product in products %}
+                            {% if product.rank.title is same as "Rapport qualité/prix" %}
+                                {{ include('product/product_rank.html.twig', { 'product': product }) }}
+                            {% endif %}
+                            {% endfor %}
                         </div>
-                    </div>
+                        <div class="hidden" id="tab-bestseller">
+                            {% for product in products %}
+                            {% if product.rank.title is same as "Meilleure vente" %}
+                                {{ include('product/product_rank.html.twig', { 'product': product }) }}
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="hidden" id="tab-bestprice">
+                            {% for product in products %}
+                            {% if product.rank.title is same as "Meilleur prix" %}
+                                {{ include('product/product_rank.html.twig', { 'product': product }) }}
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="hidden" id="tab-bestquality">
+                            {% for product in products %}
+                            {% if product.rank.title is same as "Meilleure qualité" %}
+                                {{ include('product/product_rank.html.twig', { 'product': product }) }}
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-    {% endfor %}
+<script type="text/javascript">
+    function changeAtiveTab(event,tabID){
+        let element = event.target;
+        while(element.nodeName !== "A"){
+            element = element.parentNode;
+        }
+        ulElement = element.parentNode.parentNode;
+        aElements = ulElement.querySelectorAll("li > a");
+        tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
+        for(let i = 0 ; i < aElements.length; i++){
+            aElements[i].classList.remove("text-gray-600");
+            aElements[i].classList.remove("bg-gray-100");
+            aElements[i].classList.add("text-slate-600");
+            aElements[i].classList.add("bg-white");
+            tabContents[i].classList.add("hidden");
+            tabContents[i].classList.remove("block");
+        }
+        element.classList.remove("text-slate-600");
+        element.classList.remove("bg-white");
+        element.classList.add("text-gray-600");
+        element.classList.add("bg-gray-100");
+        document.getElementById(tabID).classList.remove("hidden");
+        document.getElementById(tabID).classList.add("block");
+    }
+</script>
+
+
 {% endblock %}

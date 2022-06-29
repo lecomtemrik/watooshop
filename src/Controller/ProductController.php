@@ -30,7 +30,7 @@ class ProductController extends AbstractController
     {
         $products = $productRepository->findAll();
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/product.html.twig', [
             'products' => $products,
         ]);
 
@@ -41,7 +41,7 @@ class ProductController extends AbstractController
     {
         $products = $productRepository->findBy(['pathProduct'=> $pathProduct]);
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/product.html.twig', [
             'products' => $products,
         ]);
 
@@ -69,7 +69,7 @@ class ProductController extends AbstractController
             $products = $rank->getProducts();
         }
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/product.html.twig', [
             'products' => $products,
         ]);
     }
@@ -82,7 +82,7 @@ class ProductController extends AbstractController
             $products = $rank->getProducts();
         }
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/product.html.twig', [
             'products' => $products,
         ]);
     }
@@ -95,7 +95,7 @@ class ProductController extends AbstractController
             $products = $rank->getProducts();
         }
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/product.html.twig', [
             'products' => $products,
         ]);
     }
@@ -108,7 +108,7 @@ class ProductController extends AbstractController
             $products = $rank->getProducts();
         }
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/product.html.twig', [
             'products' => $products,
         ]);
     }
