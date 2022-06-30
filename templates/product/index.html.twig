@@ -26,23 +26,23 @@
     <div class="w-full">
         <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
             <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-gray-600 bg-gray-100" onclick="changeAtiveTab(event,'tab-qualityprice')">
-                    <i class="fas fa-space-shuttle text-base mr-1"></i>  Qualité/Prix
+                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-gradient-to-r from-cyan-500 to-blue-500" onclick="changeAtiveTab(event,'tab-qualityprice')">
+                    <i class="fa-solid fa-check-double fa-xl"></i>  Qualité/Prix
                 </a>
             </li>
             <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
                 <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestseller')">
-                    <i class="fas fa-cog text-base mr-1"></i>  Meilleure vente
+                    <i class="fa-solid fa-trophy fa-xl"></i>  Meilleure vente
                 </a>
             </li>
             <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
                 <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestprice')">
-                    <i class="fas fa-briefcase text-base mr-1"></i>  Meilleur prix
+                    <i class="fa-solid fa-hand-holding-dollar fa-2xl"></i>  Meilleur prix
                 </a>
             </li>
             <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
                 <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestquality')">
-                    <i class="fas fa-briefcase text-base mr-1"></i>  Meilleur qualité
+                    <i class="fa-solid fa-check-to-slot fa-2xl"></i>  Meilleur qualité
                 </a>
             </li>
         </ul>
@@ -94,8 +94,10 @@
         aElements = ulElement.querySelectorAll("li > a");
         tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
         for(let i = 0 ; i < aElements.length; i++){
-            aElements[i].classList.remove("text-gray-600");
-            aElements[i].classList.remove("bg-gray-100");
+            aElements[i].classList.remove("text-white");
+            aElements[i].classList.remove("bg-gradient-to-r");
+            aElements[i].classList.remove("from-cyan-500");
+            aElements[i].classList.remove("to-blue-500");
             aElements[i].classList.add("text-slate-600");
             aElements[i].classList.add("bg-white");
             tabContents[i].classList.add("hidden");
@@ -103,8 +105,10 @@
         }
         element.classList.remove("text-slate-600");
         element.classList.remove("bg-white");
-        element.classList.add("text-gray-600");
-        element.classList.add("bg-gray-100");
+        element.classList.add("text-white");
+        element.classList.add("bg-gradient-to-r");
+        element.classList.add("from-cyan-500");
+        element.classList.add("to-blue-500");
         document.getElementById(tabID).classList.remove("hidden");
         document.getElementById(tabID).classList.add("block");
     }
