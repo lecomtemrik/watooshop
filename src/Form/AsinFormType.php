@@ -28,7 +28,7 @@ class AsinFormType extends AbstractType
                 'choice_label' => 'title',
                 'label' => 'Sous catégorie'
             ])
-            ->add('pathCategory', TextType::class)
+            ->add('pathProduct', TextType::class)
             ->add('add', SubmitType::class, ['label' => 'Ajouter'])
             ->add('update', SubmitType::class, ['label' => 'Mettre à jour'])
         ;

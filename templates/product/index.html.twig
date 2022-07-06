@@ -60,6 +60,9 @@
                         <div class="hidden" id="tab-bestseller">
                             {% for product in products %}
                             {% if product.rank.title is same as "Meilleure vente" %}
+{#                                {% for attribute in product.attributes %}#}
+{#                                    {{ dump(attribute) }}#}
+{#                                {% endfor %}#}
                                 {{ include('product/product_rank.html.twig', { 'product': product }) }}
                             {% endif %}
                             {% endfor %}
