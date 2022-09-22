@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Watooshop{% endblock %}
+
+{% block body %}
+
+    <section class="juice3 bg-slate-50 bg-opacity-90 py-10">
+        <div class="container mx-auto px-4 flex flex-col lg:flex-row">
+            <!-- left -->
+            <div class="juice relative lg:w-2/3 rounded-xl bg-white bg-cover p-8 md:p-16 drop-shadow-md">
+                <p class="max-w-sm text-secondary text-3xl md:text-4xl font-semibold">Simplifier vos achats en ligne avec Watooshop</p>
+                <p class="max-w-xs pr-10 text-secondary font-semibold mt-8">Une selection des meilleurs produits par catégories disponible sur Amazon.fr</p>
+            </div>
+            <!-- right -->
+            <div class="juice2 mt-6 lg:mt-0 lg:ml-6 lg:w-1/3 rounded-xl bg-blue-400 bg-cover p-8 md:p-16 drop-shadow-md text-white">
+                <div class="max-w-sm">
+                    <p class="text-3xl md:text-4xl font-semibold uppercase">Tout pour vous satisfaire</p>
+                    <p class="mt-8 font-semibold">Nous selectionnons nous même les meilleurs produits d'amazon grâce à différents processus pour obtenir le meilleur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto pt-12 bg-white">
+        <!-- title -->
+        <div class="relative flex items-end font-bold">
+            <h2 class="text-2xl">Nos catégories à votre disposition !</h2>
+            <a href class="ml-10 flex items-center text-gray-400">
+                <span class="text-sm">Toutes les Catégories</span>
+                <svg class="ml-3 h-3.5" aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="svg-inline--fa fa-chevron-right fa-w-8 fa-9x"><path fill="currentColor" d="M24.707 38.101L4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z"></path></svg>
+            </a>
+            <div class="ml-auto flex">
+                <a href class="h-6 w-6 flex items-center justify-center rounded-md bg-gray-100">
+                    <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="svg-inline--fa fa-chevron-left fa-w-8 fa-3x"><path fill="currentColor" d="M231.293 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L70.393 256 251.092 74.87c4.686-4.686 4.686-12.284 0-16.971L231.293 38.1c-4.686-4.686-12.284-4.686-16.971 0L4.908 247.515c-4.686 4.686-4.686 12.284 0 16.971L214.322 473.9c4.687 4.686 12.285 4.686 16.971-.001z"></path></svg>
+                </a>
+                <a href class="ml-1.5 h-6 w-6 flex items-center justify-center rounded-md bg-blue-400">
+                    <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="svg-inline--fa fa-chevron-right fa-w-8 fa-3x"><path fill="currentColor" d="M24.707 38.101L4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z"></path></svg>
+                </a>
+            </div>
+        </div>
+        <!-- cards -->
+        <div class="mt-10">
+            <ul class="-m-3.5 flex">
+                {% for category in categories %}
+                    <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
+                        <img class="max-h-20" src="{{ category.image }}" alt="" />
+                        <span class="font-semibold text-white">{{ category.title }}</span>
+                    </li>
+                {% endfor %}
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://jsl-online.com/wp-content/uploads/revslider/App-Studio-Welcome/iPhone.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Téléphone</span>#}
+                {#                </li>#}
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://jsl-online.com/wp-content/uploads/revslider/App-Studio-Welcome/iPhone.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Téléphone</span>#}
+                {#                </li>#}
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://i.pinimg.com/originals/70/d7/d3/70d7d3fccc11ded2fd4c43c62027a60d.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Clavier</span>#}
+                {#                </li>#}
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://www.picng.com/upload/computer_mouse/png_computer_mouse_71921.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Souris</span>#}
+                {#                </li>#}
+
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://library.kissclipart.com/20180921/gqe/kissclipart-transparent-flat-screen-tv-clipart-led-backlit-lcd-6a5a840dae388a45.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Télévision</span>#}
+                {#                </li>#}
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://jsl-online.com/wp-content/uploads/revslider/App-Studio-Welcome/iPhone.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Téléphone</span>#}
+                {#                </li>#}
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://i.pinimg.com/originals/70/d7/d3/70d7d3fccc11ded2fd4c43c62027a60d.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Clavier</span>#}
+                {#                </li>#}
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://www.picng.com/upload/computer_mouse/png_computer_mouse_71921.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Souris</span>#}
+                {#                </li>#}
+                {#                <li class="m-3.5 h-52 w-40 bg-blue-300 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">#}
+                {#                    <img class="max-h-20" src="https://www.picng.com/upload/computer_mouse/png_computer_mouse_71921.png" alt="" />#}
+                {#                    <span class="font-semibold text-white">Souris</span>#}
+                {#                </li>#}
+            </ul>
+        </div>
+    </section>
+
+    <section class="container mx-auto pt-12">
+        <!-- title -->
+        <div class="relative flex items-end font-bold">
+            <h2 class="text-2xl">Ne perdez pas de temps !</h2>
+        </div>
+        <div class="container px-6 py-8 mx-auto">
+            <div class="lg:flex lg:-mx-2">
+                <div class="space-y-3 lg:w-1/5 lg:px-2 lg:space-y-4">
+                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Jackets & Coats</a>
+                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Hoodies</a>
+                    <a href="#" class="block font-medium text-blue-600 dark:text-blue-500 hover:underline">T-shirts & Vests</a>
+                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Shirts</a>
+                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Blazers & Suits</a>
+                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Jeans</a>
+                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Trousers</a>
+                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Shorts</a>
+                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Underwear</a>
+                </div>
+
+                <div class="mt-6 lg:mt-0 lg:px-2 lg:w-4/5 ">
+                    <div class="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
+                            <img class="object-cover w-full rounded-md h-72 xl:h-80" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="T-Shirt">
+                            <h4 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-200">Printed T-shirt</h4>
+                            <p class="text-blue-500">$12.55</p>
+
+                            {#                                        <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-700">#}
+                            {#                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-1" viewBox="0 0 20 20" fill="currentColor">#}
+                            {#                                                <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />#}
+                            {#                                            </svg>#}
+                            {#                                            <span class="mx-1">Add to cart</span>#}
+                            {#                                        </button>#}
+
+                            <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide capitalize transition-colors duration-200 transform text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md focus:outline-none hover:bg-blue-800">
+                                <span class="mx-1">Acheter sur Amazon</span>
+                            </button>
+
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
+                            <img class="object-cover w-full rounded-md h-72 xl:h-80" src="https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=966&q=80" alt="T-Shirt">
+                            <h4 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-200"> Slub jersey T-shirt</h4>
+                            <p class="text-blue-500">$18.70</p>
+
+                            <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide capitalize transition-colors duration-200 transform text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md focus:outline-none hover:bg-blue-800">
+                                <span class="mx-1">Acheter sur Amazon</span>
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
+                            <img class="object-cover w-full rounded-md h-72 xl:h-80" src="https://images.unsplash.com/photo-1603320409990-02d834987237?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="T-Shirt">
+                            <h4 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-200">T-shirt with a motif</h4>
+                            <p class="text-blue-500">$16.55</p>
+
+                            <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide capitalize transition-colors duration-200 transform text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md focus:outline-none hover:bg-blue-800">
+                                <span class="mx-1">Acheter sur Amazon</span>
+                            </button>
+
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
+                            <img class="object-cover w-full rounded-md h-72 xl:h-80" src="https://images.unsplash.com/photo-1603320410149-db26b12d5c2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="T-Shirt">
+                            <h4 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-200">Art T-shirt</h4>
+                            <p class="text-blue-500">$12.55</p>
+
+                            <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide capitalize transition-colors duration-200 transform text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md focus:outline-none hover:bg-blue-800">
+                                <span class="mx-1">Acheter sur Amazon</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto pt-12">
+        <!-- title -->
+        <div class="relative flex items-end font-bold">
+            <h2 class="text-2xl">Le meilleur rien que pour vous !</h2>
+        </div>
+        <!-- cards -->
+        <div class="mt-10">
+            <ul class="-m-3.5 flex">
+                <li class="product m-3.5 h-48 w-1/4 bg-cover rounded-xl bg-blue-300"></li>
+                <li class="product2 m-3.5 h-48 w-1/4 bg-cover rounded-xl bg-blue-300"></li>
+                <li class="product4 m-3.5 h-48 w-1/4 bg-cover rounded-xl bg-blue-300"></li>
+                <li class="product3 m-3.5 h-48 w-1/4 bg-cover rounded-xl bg-blue-300"></li>
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

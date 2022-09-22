@@ -56,9 +56,16 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Attribute::class, orphanRemoval: true)]
     private $attributes;
 
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Review::class)]
+    private $reviews;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $brand;
+
     public function __construct()
     {
         $this->attributes = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -236,6 +243,48 @@ class Product
                 $attribute->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Review>
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(Review $review): self
+    {
+        if (!$this->reviews->contains($review)) {
+            $this->reviews[] = $review;
+            $review->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): self
+    {
+        if ($this->reviews->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getProduct() === $this) {
+                $review->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBrand(): ?string
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(string $brand): self
+    {
+        $this->brand = $brand;
 
         return $this;
     }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Attribute;
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\Review;
 use App\Entity\SubCategory;
 use App\Form\AsinFormType;
 use App\Form\CategoryFormType;
@@ -123,11 +124,14 @@ class DashboardController extends AbstractController
             $subCat = $form->getData()['SubCategory'];
             $rank = $form->getData()['Rank'];
             $pathProduct = $form->getData()['pathProduct'];
+            $entityManager = $this->doctrine->getManager();
             if ($form->get('add')->isClicked()){
-                $this->scraperAmazonProduct($asin, $subCat, $rank, $pathProduct);
+                $product = new Product();
+                $this->amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct);
             }
             if ($form->get('update')->isClicked()){
-                $this->updateAmazonProduct($asin, $subCat, $rank, $pathProduct);
+                $product = $this->doctrine->getRepository(Product::class)->findOneBy(['asin'=>$asin]);
+                $this->amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct);
             }
         }
         return $this->render('dashboard/add_product.html.twig', [
@@ -145,19 +149,12 @@ class DashboardController extends AbstractController
     }
 
 
-    //Scrap product with asin to persist into db
-    public function scraperAmazonProduct($asin, $subCat, $rank, $pathProduct){
-
+    public function amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct){
         $ApiProduct = $this->AmazonApi->fetchAmazonProduct($asin);
-
-        $entityManager = $this->doctrine->getManager();
-
-//        B09G9C21MH
-
-        $product = new Product();
         $product->setTitle($ApiProduct['product']['title']);
         $product->setAsin($asin);
         $product->setPathProduct($pathProduct);
+        $product->setBrand($ApiProduct['product']['brand']);
         if (isset($ApiProduct['product']['rating'])){
             $product->setRating($ApiProduct['product']['rating']);
         }else {
@@ -202,32 +199,30 @@ class DashboardController extends AbstractController
             }
         }
 
+        if (isset($ApiProduct['product']['top_reviews'])){
+
+            $reviewsNb = count($ApiProduct['product']['top_reviews']) - 1;
+            for($i=0; $i <= $reviewsNb; $i++) {
+                ${'reviews' . $i} = new Review();
+                ${'reviews' . $i}->setProduct($product);
+                ${'reviews' . $i}->setTitle($ApiProduct['product']['top_reviews'][$i]['title']);
+                ${'reviews' . $i}->setBody($ApiProduct['product']['top_reviews'][$i]['body']);
+                ${'reviews' . $i}->setRating($ApiProduct['product']['top_reviews'][$i]['rating']);
+                ${'reviews' . $i}->setDate($ApiProduct['product']['top_reviews'][$i]['date']['utc']);
+                ${'reviews' . $i}->setProfileName($ApiProduct['product']['top_reviews'][$i]['profile']['name']);
+                if (isset($ApiProduct['product']['top_reviews'][$i]['profile']['image'])){
+                    ${'reviews' . $i}->setProfilePicture($ApiProduct['product']['top_reviews'][$i]['profile']['image']);
+                }
+                ${'reviews' . $i}->setCountry($ApiProduct['product']['top_reviews'][$i]['review_country']);
+                $entityManager->persist(${'reviews' . $i});
+
+            }
+        }
 
 
         $entityManager->persist($product);
         $entityManager->flush();
 
-    }
-
-    //update product with asin to persist into db
-    public function updateAmazonProduct($asin, $subCat, $rank, $pathProduct){
-        $ApiProduct = $this->AmazonApi->fetchAmazonProduct($asin);
-        $entityManager = $this->doctrine->getManager();
-
-        $product = $this->doctrine->getRepository(Product::class)->findOneBy(['asin'=>$asin]);
-        $product->setTitle($ApiProduct['product']['title']);
-
-        $product->setAsin($asin);
-        $product->setRating($ApiProduct['product']['rating']);
-        $product->setPrice($ApiProduct['product']['buybox_winner']['price']['value']);
-
-        $product->setAlink('empty');
-        $product->setDescription($ApiProduct['product']['description']);
-        $product->setImage($ApiProduct['product']['main_image']['link']);
-        $product->setSubcategory($subCat);
-        $product->setRank($rank);
-        $entityManager->persist($product);
-        $entityManager->flush();
     }
 
 }

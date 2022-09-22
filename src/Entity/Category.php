@@ -24,6 +24,9 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     private $pathCategory;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $image;
+
     public function __construct()
     {
         $this->subCategories = new ArrayCollection();
@@ -84,6 +87,18 @@ class Category
     public function setPathCategory(string $pathCategory): self
     {
         $this->pathCategory = $pathCategory;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
