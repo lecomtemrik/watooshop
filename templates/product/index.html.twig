@@ -4,160 +4,123 @@
 
 {% block body %}
 
-<!-- component -->
-<style>
-    .text-xxs {
-        font-size: 0.70rem;
-        line-height: 0.90rem;
-    }
+<article>
 
-    .rounded-xss {
-        border-radius: 2px !important;
-    }
-</style>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 mx-auto">
 
-{#        https://tailwindcomponents.com/component/product-card-like-themeforest #}
-
-<!-- MDI Icons -->
-<link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" />
-<section class="container mx-auto pt-12">
-<div class="flex justify-center flex-wrap" id="tabs-id">
-    <div class="w-3/5">
-        <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-gradient-to-r from-cyan-500 to-blue-500" onclick="changeAtiveTab(event,'tab-qualityprice')">
-                    <i class="fa-solid fa-check-double fa-xl"></i>  Qualité/Prix
+            <div class="flex items-center py-5 overflow-y-auto whitespace-nowrap">
+                <a href="#" class="text-gray-600 dark:text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                    </svg>
                 </a>
-            </li>
-            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestseller')">
-                    <i class="fa-solid fa-trophy fa-xl"></i>  Meilleure vente
+                <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+                <a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
+                    Account
                 </a>
-            </li>
-            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestprice')">
-                    <i class="fa-solid fa-hand-holding-dollar fa-2xl"></i>  Meilleur prix
+                <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+                <a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
+                    Profile
                 </a>
-            </li>
-            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-slate-600 bg-white" onclick="changeAtiveTab(event,'tab-bestquality')">
-                    <i class="fa-solid fa-check-to-slot fa-2xl"></i>  Meilleur qualité
+                <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">
+                    Settings
                 </a>
-            </li>
-        </ul>
-        <div class="flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div class="px-4 py-5 flex-auto">
-                <div class="tab-content tab-space">
+            </div>
 
-                        <div class="block" id="tab-qualityprice">
-                            {% for product in products %}
-                                {% if product.rank.title is same as "Rapport qualité/prix" %}
-                                    {{ include('product/product_rank.html.twig', { 'product': product }) }}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+            <div class="rounded-lg h-64 overflow-hidden mb-5">
+                <img alt="content" class="object-cover object-center h-full w-full drop-shadow-xl" src="https://c0.lestechnophiles.com/images.frandroid.com/wp-content/uploads/2020/03/samsung-odyssey-g9.jpg">
+            </div>
 
-                        <div class="hidden" id="tab-bestseller">
-                            {% for product in products %}
-                                {% if product.rank.title is same as "Meilleure vente" %}
-                                    {{ include('product/product_rank.html.twig', { 'product': product }) }}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        <div class="hidden" id="tab-bestprice">
-                            {% for product in products %}
-                                {% if product.rank.title is same as "Meilleur prix" %}
-                                    {{ include('product/product_rank.html.twig', { 'product': product }) }}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        <div class="hidden" id="tab-bestquality">
-                            {% for product in products %}
-                                {% if product.rank.title is same as "Meilleure qualité" %}
-                                    {{ include('product/product_rank.html.twig', { 'product': product }) }}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+            <div class="text-center mb-5">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Moniteur Gaming</h1>
+                <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">Choisisez parmis nos quatres catégories celle qui convient le mieux à vos attente</p>
+                <div class="flex mt-6 justify-center">
+                    <div class="w-16 h-1 rounded-full bg-sky-500 inline-flex"></div>
                 </div>
             </div>
+
+            <div class="flex justify-center flex-wrap" id="tabs-id">
+
+                <div class="container px-5 mx-auto flex flex-wrap flex-col">
+                    <div class="flex mx-auto flex-wrap mb-20">
+                        <a onclick="changeAtiveTab(event,'tab-bestseller')" class="cursor-pointer sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium bg-gray-100 inline-flex items-center leading-none border-sky-500 text-sky-500 tracking-wider rounded-t">
+                            Meilleure vente
+                        </a>
+                        <a onclick="changeAtiveTab(event,'tab-bestprice')" class="cursor-pointer sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none border-gray-200 hover:text-gray-900 tracking-wider">
+                            Meilleur prix
+                        </a>
+                        <a onclick="changeAtiveTab(event,'tab-bestquality')" class="cursor-pointer sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none border-gray-200 hover:text-gray-900 tracking-wider">
+                           Meilleure qualité
+                        </a>
+                        <a onclick="changeAtiveTab(event,'tab-qualityprice')" class="cursor-pointer sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none border-gray-200 hover:text-gray-900 tracking-wider">
+                           Meilleure qualité/prix
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tab-content tab-space">
+
+                    <div class="block" id="tab-bestseller">
+
+                        {% for product in products %}
+                            {% if product.rank.title is same as "Meilleure vente" %}
+                                {{ include('product/product_content.html.twig', { 'product': product }) }}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="hidden" id="tab-bestprice">
+
+                        {% for product in products %}
+                            {% if product.rank.title is same as "Meilleur prix" %}
+                                {{ include('product/product_content.html.twig', { 'product': product }) }}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="hidden" id="tab-bestquality">
+
+                        {% for product in products %}
+                            {% if product.rank.title is same as "Meilleure qualité" %}
+                                {{ include('product/product_content.html.twig', { 'product': product }) }}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="hidden" id="tab-qualityprice">
+
+                        {% for product in products %}
+                            {% if product.rank.title is same as "Rapport qualité/prix" %}
+                                {{ include('product/product_content.html.twig', { 'product': product }) }}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+    </section>
 
-
-        <div class="tab-content tab-space min-w-0 break-words bg-white mb-6 shadow-lg rounded">
-
-            <div class="block" id="tab-qualityprice-second-container">
-                {% for product in products %}
-                    {% if product.rank.title is same as "Rapport qualité/prix" %}
-                        {{ include('product/product_attribute.html.twig', { 'product': product }) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div class="hidden" id="tab-bestseller-second-container">
-                {% for product in products %}
-                    {% if product.rank.title is same as "Meilleure vente" %}
-                        {{ include('product/product_attribute.html.twig', { 'product': product }) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div class="hidden" id="tab-bestprice-second-container">
-                {% for product in products %}
-                    {% if product.rank.title is same as "Meilleur prix" %}
-                        {{ include('product/product_attribute.html.twig', { 'product': product }) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div class="hidden" id="tab-bestquality-second-container">
-                {% for product in products %}
-                    {% if product.rank.title is same as "Meilleure qualité" %}
-                        {{ include('product/product_attribute.html.twig', { 'product': product }) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-
-
-        <div class="tab-content tab-space min-w-0 break-words bg-white mb-6 shadow-lg rounded">
-
-            <div class="block" id="tab-qualityprice-third-container">
-                {% for product in products %}
-                    {% if product.rank.title is same as "Rapport qualité/prix" %}
-                        {{ include('product/product_review.html.twig', { 'product': product }) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div class="hidden" id="tab-bestseller-third-container">
-                {% for product in products %}
-                    {% if product.rank.title is same as "Meilleure vente" %}
-                        {{ include('product/product_review.html.twig', { 'product': product }) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div class="hidden" id="tab-bestprice-third-container">
-                {% for product in products %}
-                    {% if product.rank.title is same as "Meilleur prix" %}
-                        {{ include('product/product_review.html.twig', { 'product': product }) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div class="hidden" id="tab-bestquality-third-container">
-                {% for product in products %}
-                    {% if product.rank.title is same as "Meilleure qualité" %}
-                        {{ include('product/product_review.html.twig', { 'product': product }) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-        </div>
-
-    </div>
-</div>
-</section>
+</article>
 
 <script type="text/javascript">
     function changeAtiveTab(event,tabID){
@@ -166,38 +129,30 @@
             element = element.parentNode;
         }
         ulElement = element.parentNode.parentNode;
-        aElements = ulElement.querySelectorAll("li > a");
+        aElements = ulElement.querySelectorAll("a");
         tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
-        for(let i = 0 ; i < aElements.length; i++){
-            aElements[i].classList.remove("text-white");
-            aElements[i].classList.remove("bg-gradient-to-r");
-            aElements[i].classList.remove("from-cyan-500");
-            aElements[i].classList.remove("to-blue-500");
-            aElements[i].classList.add("text-slate-600");
-            aElements[i].classList.add("bg-white");
-        }
 
-        console.log(tabContents);
+        for(let i = 0 ; i < aElements.length; i++){
+            aElements[i].classList.remove("bg-gray-100");
+            aElements[i].classList.remove("text-sky-500");
+            aElements[i].classList.remove("border-sky-500");
+            aElements[i].classList.add("border-gray-200");
+            aElements[i].classList.add("hover:text-gray-900");
+        }
 
         for(let i = 0 ; i < tabContents.length; i++){
             tabContents[i].classList.add("hidden");
             tabContents[i].classList.remove("block");
         }
 
-        element.classList.remove("text-slate-600");
-        element.classList.remove("bg-white");
-        element.classList.add("text-white");
-        element.classList.add("bg-gradient-to-r");
-        element.classList.add("from-cyan-500");
-        element.classList.add("to-blue-500");
+        element.classList.remove("border-gray-200");
+        element.classList.remove("hover:text-gray-900");
+        element.classList.add("bg-gray-100");
+        element.classList.add("text-sky-500");
+        element.classList.add("border-sky-500");
+
         document.getElementById(tabID).classList.remove("hidden");
         document.getElementById(tabID).classList.add("block");
-
-        document.getElementById(tabID+"-second-container").classList.remove("hidden");
-        document.getElementById(tabID+"-second-container").classList.add("block");
-
-        document.getElementById(tabID+"-third-container").classList.remove("hidden");
-        document.getElementById(tabID+"-third-container").classList.add("block");
     }
 </script>
 
