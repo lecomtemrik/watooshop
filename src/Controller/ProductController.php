@@ -56,6 +56,8 @@ class ProductController extends AbstractController
         }
         return $this->render('product/index.html.twig', [
             'products' => $products,
+            'category' => $products->getValues()[0]->getSubcategory()->getCategory()->getTitle(),
+            'sousCategory' => $products->getValues()[0]->getSubcategory()->getTitle(),
         ]);
 
     }
