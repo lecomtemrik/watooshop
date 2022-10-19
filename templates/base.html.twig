@@ -128,11 +128,12 @@
 {#                    <img class="h-8 md:h-10" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/OpenCart_icon.svg/550px-OpenCart_icon.svg.png" alt="" />#}
                 </div>
 
+                {# @todo dropdown multilevel => https://tailwindcomponents.com/component/nestable-dropdown-menu #}
                 <div class="dropdown">
-                    <button class="dropbtn bg-blue-600 hover:bg-blue-700 font-bold uppercase text-blue-600 px-4 xl:px-6 py-2 xl:py-3 rounded flex-shrink-0 flex items-center">
+                    <a href="{{ path("category")}}"  class="dropbtn bg-blue-600 hover:bg-blue-700 font-bold uppercase text-blue-600 px-4 xl:px-6 py-2 xl:py-3 rounded flex-shrink-0 flex items-center">
                         <svg class="h-8 p-1" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-9x"><path fill="currentColor" d="M442 114H6a6 6 0 0 1-6-6V84a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6z" class=""></path></svg>
                         <span class="ml-4">Catégories</span>
-                    </button>
+                    </a>
                     <div class="dropdown-content rounded-lg sm:hidden">
                         <div class="sm:hidden">
                             <a href="{{ path('best_sellers') }}" class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">

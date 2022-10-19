@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\RankRepository;
 use App\Repository\SubCategoryRepository;
@@ -34,6 +35,16 @@ class ProductController extends AbstractController
             'products' => $products,
         ]);
 
+    }
+
+    #[Route('/categories', name: 'category')]
+    public function category(CategoryRepository $categoryRepository): Response
+    {
+       $categories = $categoryRepository->findAll();
+
+        return $this->render('category.html.twig', [
+            'categories' => $categories,
+        ]);
     }
 
     #[Route('/{pathCategory}/{pathSubCategory}/{pathProduct}', name: 'product')]
