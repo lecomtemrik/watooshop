@@ -26,16 +26,16 @@ class ProductController extends AbstractController
 
     }
 
-    #[Route('/products', name: 'products')]
-    public function index(ProductRepository $productRepository): Response
-    {
-        $products = $productRepository->findAll();
-
-        return $this->render('product/product.html.twig', [
-            'products' => $products,
-        ]);
-
-    }
+//    #[Route('/products', name: 'products')]
+//    public function index(ProductRepository $productRepository): Response
+//    {
+//        $products = $productRepository->findAll();
+//
+//        return $this->render('product/best.html.twig', [
+//            'products' => $products,
+//        ]);
+//
+//    }
 
     #[Route('/categories', name: 'category')]
     public function category(CategoryRepository $categoryRepository): Response
@@ -50,10 +50,10 @@ class ProductController extends AbstractController
     #[Route('/{pathCategory}/{pathSubCategory}/{pathProduct}', name: 'product')]
     public function product(ProductRepository $productRepository, string $pathProduct): Response
     {
-        $products = $productRepository->findBy(['pathProduct'=> $pathProduct]);
+        $product = $productRepository->findOneBy(['pathProduct'=> $pathProduct]);
 
         return $this->render('product/product.html.twig', [
-            'products' => $products,
+            'product' => $product,
         ]);
 
     }
@@ -82,7 +82,7 @@ class ProductController extends AbstractController
             $products = $rank->getProducts();
         }
 
-        return $this->render('product/product.html.twig', [
+        return $this->render('product/best.html.twig', [
             'products' => $products,
         ]);
     }
@@ -95,7 +95,7 @@ class ProductController extends AbstractController
             $products = $rank->getProducts();
         }
 
-        return $this->render('product/product.html.twig', [
+        return $this->render('product/best.html.twig', [
             'products' => $products,
         ]);
     }
@@ -108,7 +108,7 @@ class ProductController extends AbstractController
             $products = $rank->getProducts();
         }
 
-        return $this->render('product/product.html.twig', [
+        return $this->render('product/best.html.twig', [
             'products' => $products,
         ]);
     }
@@ -121,7 +121,7 @@ class ProductController extends AbstractController
             $products = $rank->getProducts();
         }
 
-        return $this->render('product/product.html.twig', [
+        return $this->render('product/best.html.twig', [
             'products' => $products,
         ]);
     }
