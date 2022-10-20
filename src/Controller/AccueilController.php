@@ -12,15 +12,12 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class AccueilController extends AbstractController
 {
     #[Route('/', name: 'app_accueil')]
-    public function index(SubCategoryRepository $subCategoryRepository, CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository): Response
     {
         $session = new Session();
         $session->clear();
-        $session->set('subCats', $subCategoryRepository->findAll());
-        $categories = $categoryRepository->findAll();
+        $session->set('categories', $categoryRepository->findAll());
 
-        return $this->render('home.html.twig', [
-            'categories' => $categories,
-        ]);
+        return $this->render('home.html.twig');
     }
 }
