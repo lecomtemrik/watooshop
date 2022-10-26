@@ -17,7 +17,9 @@ class AsinFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('asin', TextType::class)
+            ->add('asin', TextType::class, [
+                'attr' => ['placeholder' => 'ASIN']
+            ])
             ->add('Rank',EntityType::class, [
                 'class' => Rank::class,
                 'choice_label' => 'title',
@@ -28,7 +30,9 @@ class AsinFormType extends AbstractType
                 'choice_label' => 'title',
                 'label' => 'Sous catégorie'
             ])
-            ->add('pathProduct', TextType::class)
+            ->add('pathProduct', TextType::class, [
+                'attr' => ['placeholder' => 'Path product']
+            ])
             ->add('add', SubmitType::class, ['label' => 'Ajouter'])
             ->add('update', SubmitType::class, ['label' => 'Mettre à jour'])
         ;
