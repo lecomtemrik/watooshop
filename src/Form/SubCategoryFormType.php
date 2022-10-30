@@ -16,8 +16,12 @@ class SubCategoryFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('pathSubCategory', TextType::class)
+            ->add('title', TextType::class, [
+                'attr' => ['placeholder' => 'Title']
+            ])
+            ->add('pathSubCategory', TextType::class, [
+                'attr' => ['placeholder' => 'Path subCategory']
+            ])
             ->add('category', EntityType::class,[
                 'class' => Category::class,
                 'choice_label' => 'title',

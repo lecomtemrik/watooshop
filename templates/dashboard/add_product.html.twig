@@ -4,45 +4,48 @@
 
 {% block body %}
 
-    <section class="bg-gray-100">
-        <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-                    <div class="lg:col-span-2 lg:py-12">
-                        <h1>Ajouter un produit</h1>
-                        <p class="max-w-xl text-lg">
-                            ASIN : Amazon Standard Identification Number sert à identifier un produit amazon<br>
-                            Path product : Le chemin qui servira dans l'url du produit
-                        </p>
-                    </div>
+<section class="bg-gray-100 mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-lg">
+        <h1 class="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
+            Ajouter un produit
+        </h1>
 
-                    <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-                        {{ form_start(Form, {'attr': {'class':'space-y-4'}}) }}
-                            <div>
-                                {{ form_widget(Form.asin, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-3 text-sm'}}) }}
-                            </div>
-                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                <div>
-                                    {{ form_widget(Form.Rank, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-3 text-sm'}}) }}
-                                </div>
-                                <div>
-                                    {{ form_widget(Form.SubCategory, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-3 text-sm'}}) }}
-                                </div>
-                            </div>
+        <p class="mx-auto mt-4 max-w-md text-center text-gray-500">
+        ASIN : Amazon Standard Identification Number sert à identifier un produit amazon<br>
+        Path product : Le chemin qui servira dans l'url du produit
+        </p>
 
-                            <div>
-                                {{ form_widget(Form.pathProduct, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-3 text-sm'}}) }}
-                            </div>
-
-                            <div class="mt-4">
-                                {{ form_widget(Form.update, {'attr': {'class': 'mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-600 text-base font-medium text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-600 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'}}) }}
-                                {{ form_widget(Form.add, {'attr': {'class': 'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 sm:ml-3 sm:w-auto sm:text-sm'}}) }}
-                            </div>
-                        {{ form_end(Form) }}
-                    </div>
-
+        {{ form_start(Form, {'attr': {'class':'mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl'}}) }}
+            <div>
+                <div class="relative mt-1">
+                    {{ form_widget(Form.asin, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm'}}) }}
+                </div>
             </div>
-        </div>
-    </section>
+
+            <div>
+                <div class="relative mt-1">
+                    {{ form_widget(Form.Rank, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm'}}) }}
+                </div>
+            </div>
+
+            <div>
+                <div class="relative mt-1">
+                    {{ form_widget(Form.SubCategory, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-3 text-sm'}}) }}
+                </div>
+            </div>
+
+            <div>
+                <div class="relative mt-1">
+                    {{ form_widget(Form.pathProduct, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-3 text-sm'}}) }}
+                </div>
+            </div>
+
+            {{ form_widget(Form.update, {'attr': {'class': 'mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-600 text-base font-medium text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-600 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'}}) }}
+            {{ form_widget(Form.add, {'attr': {'class': 'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 sm:ml-3 sm:w-auto sm:text-sm'}}) }}
+
+        {{ form_end(Form) }}
+    </div>
+</section>
 
 {% endblock %}
 

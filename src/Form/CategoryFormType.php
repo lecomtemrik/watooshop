@@ -14,8 +14,12 @@ class CategoryFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('pathCategory', TextType::class)
+            ->add('title', TextType::class, [
+                'attr' => ['placeholder' => 'Title']
+            ])
+            ->add('pathCategory', TextType::class, [
+                'attr' => ['placeholder' => 'Path Category']
+            ])
             ->add('add', SubmitType::class, ['label' => 'Ajouter'])
         ;
     }
