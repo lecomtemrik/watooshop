@@ -20,6 +20,9 @@ class CategoryFormType extends AbstractType
             ->add('pathCategory', TextType::class, [
                 'attr' => ['placeholder' => 'Path Category']
             ])
+            ->add('image', TextType::class, [
+                'attr' => ['placeholder' => 'url image']
+            ])
             ->add('add', SubmitType::class, ['label' => 'Ajouter'])
         ;
     }

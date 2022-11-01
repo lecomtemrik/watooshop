@@ -50,7 +50,7 @@ class DashboardController extends AbstractController
 //        Permet de retourner la liste des key
 //        $keys = array_keys((array)$categories[0]);
 
-        return $this->render('dashboard/category_list.html.twig', [
+        return $this->render('dashboard/category/category_list.html.twig', [
             'categories' => $categories,
         ]);
     }
@@ -66,20 +66,49 @@ class DashboardController extends AbstractController
             $category = new Category();
             $category->setTitle($form->getData()->getTitle());
             $category->setPathCategory($form->getData()->getPathCategory());
+            $category->setImage($form->getData()->getImage());
             $entityManager->persist($category);
             $entityManager->flush();
 
         }
-        return $this->render('dashboard/add_category.html.twig', [
+        return $this->render('dashboard/category/add_category.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
+
+    #[Route('/{id}', name: 'delete_category', methods: ['POST'])]
+    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+            $categoryRepository->remove($category);
+        }
+
+        return $this->redirectToRoute('category_list', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/edit', name: 'edit_category', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    {
+        $form = $this->createForm(CategoryFormType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $categoryRepository->add($category);
+            return $this->redirectToRoute('category_list', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('dashboard/category/edit.html.twig', [
+            'category' => $category,
+            'Form' => $form,
+        ]);
+    }
+
 
     #[Route('/subcategory-list', name: 'subcategory_list')]
     public function subcategoryList(Request $request, SubCategoryRepository $subCategoryRepository): Response
     {
         $subCategories = $subCategoryRepository->findAll();
-        return $this->render('dashboard/subcategory_list.html.twig', [
+        return $this->render('dashboard/subcategory/subcategory_list.html.twig', [
             'subcategories' => $subCategories,
         ]);
     }
@@ -100,7 +129,7 @@ class DashboardController extends AbstractController
             $entityManager->flush();
 
         }
-        return $this->render('dashboard/add_subcategory.html.twig', [
+        return $this->render('dashboard/subcategory/add_subcategory.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
@@ -109,7 +138,7 @@ class DashboardController extends AbstractController
     public function productList(Request $request, ProductRepository $productRepository): Response
     {
         $products = $productRepository->findAll();
-        return $this->render('dashboard/product_list.html.twig', [
+        return $this->render('dashboard/product/product_list.html.twig', [
             'products' => $products,
         ]);
     }
@@ -134,7 +163,7 @@ class DashboardController extends AbstractController
                 $this->amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct);
             }
         }
-        return $this->render('dashboard/add_product.html.twig', [
+        return $this->render('dashboard/product/add_product.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
@@ -143,7 +172,7 @@ class DashboardController extends AbstractController
     public function userList(Request $request, UserRepository $userRepository): Response
     {
         $users = $userRepository->findAll();
-        return $this->render('dashboard/user_list.html.twig', [
+        return $this->render('dashboard/user/user_list.html.twig', [
             'users' => $users,
         ]);
     }
