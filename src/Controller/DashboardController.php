@@ -7,8 +7,10 @@ use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\Review;
 use App\Entity\SubCategory;
+use App\Entity\User;
 use App\Form\AsinFormType;
 use App\Form\CategoryFormType;
+use App\Form\RegistrationFormType;
 use App\Form\SubCategoryFormType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
@@ -76,8 +78,8 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'delete_category', methods: ['POST'])]
-    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    #[Route('/delete-category/{id}', name: 'delete_category', methods: ['POST'])]
+    public function deleteCategory(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category);
@@ -86,8 +88,8 @@ class DashboardController extends AbstractController
         return $this->redirectToRoute('category_list', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/{id}/edit', name: 'edit_category', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    #[Route('/edit-category/{id}', name: 'edit_category', methods: ['GET', 'POST'])]
+    public function editCategory(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         $form = $this->createForm(CategoryFormType::class, $category);
         $form->handleRequest($request);
@@ -134,6 +136,33 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    #[Route('/delete-subcategory/{id}', name: 'delete_subcategory', methods: ['POST'])]
+    public function deleteSubCategory(Request $request, SubCategory $subCategory, SubCategoryRepository $subCategoryRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$subCategory->getId(), $request->request->get('_token'))) {
+            $subCategoryRepository->remove($subCategory);
+        }
+
+        return $this->redirectToRoute('subcategory_list', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/edit-subcategory/{id}', name: 'edit_subcategory', methods: ['GET', 'POST'])]
+    public function editSubCategory(Request $request, SubCategory $subCategory, SubCategoryRepository $subCategoryRepository): Response
+    {
+        $form = $this->createForm(SubCategoryFormType::class, $subCategory);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $subCategoryRepository->add($subCategory);
+            return $this->redirectToRoute('subcategory_list', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('dashboard/subcategory/edit.html.twig', [
+            'subcategory' => $subCategory,
+            'Form' => $form,
+        ]);
+    }
+
     #[Route('/product-list', name: 'product_list')]
     public function productList(Request $request, ProductRepository $productRepository): Response
     {
@@ -168,6 +197,34 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    //@todo supprimer review + attributes en même temps
+    #[Route('/delete-product/{id}', name: 'delete_product', methods: ['POST'])]
+    public function deleteProduct(Request $request, Product $product, ProductRepository $productRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+            $productRepository->remove($product);
+        }
+
+        return $this->redirectToRoute('product_list', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/edit-product/{id}', name: 'edit_product', methods: ['GET', 'POST'])]
+    public function editProduct(Request $request, Product $product, ProductRepository $productRepository): Response
+    {
+        $form = $this->createForm(AsinFormType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $productRepository->add($product);
+            return $this->redirectToRoute('product_list', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('dashboard/product/edit.html.twig', [
+            'product' => $product,
+            'Form' => $form,
+        ]);
+    }
+
     #[Route('/user-list', name: 'user_list')]
     public function userList(Request $request, UserRepository $userRepository): Response
     {
@@ -177,6 +234,32 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    #[Route('/delete-user/{id}', name: 'delete_user', methods: ['POST'])]
+    public function deleteUser(Request $request, User $user, UserRepository $userRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+            $userRepository->remove($user);
+        }
+
+        return $this->redirectToRoute('user_list', [], Response::HTTP_SEE_OTHER);
+    }
+    //@todo Modification password exemple RegistrationController
+    #[Route('/edit-user/{id}', name: 'edit_user', methods: ['GET', 'POST'])]
+    public function editUser(Request $request, User $user, UserRepository $userRepository): Response
+    {
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $userRepository->add($user);
+            return $this->redirectToRoute('user_list', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('dashboard/user/edit.html.twig', [
+            'user' => $user,
+            'Form' => $form,
+        ]);
+    }
 
     public function amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct){
         $ApiProduct = $this->AmazonApi->fetchAmazonProduct($asin);

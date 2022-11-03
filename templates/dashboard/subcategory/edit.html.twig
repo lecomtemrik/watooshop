@@ -1,0 +1,43 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Edit SubCategory{% endblock %}
+
+{% block body %}
+{#    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}#}
+
+{#    #}
+
+{#    {{ include('category/_delete_form.html.twig') }}#}
+
+    <section class="bg-gray-100 mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-lg">
+            <h1 class="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
+                Modifier une sous catégorie
+            </h1>
+
+            {{ form_start(Form, {'attr': {'class':'mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl'}}) }}
+            <div>
+                <div class="relative mt-1">
+                    {{ form_widget(Form.title, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm'}}) }}
+                </div>
+            </div>
+
+            <div>
+                <div class="relative mt-1">
+                    {{ form_widget(Form.pathSubCategory, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm'}}) }}
+                </div>
+            </div>
+
+            <div>
+                <div class="relative mt-1">
+                    {{ form_widget(Form.category, {'attr': {'class': 'w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm'}}) }}
+                </div>
+            </div>
+
+            {{ form_widget(Form.add, {'attr': {'class': 'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 sm:ml-3 sm:w-auto sm:text-sm'}}) }}
+
+            <a class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 sm:ml-3 sm:w-auto sm:text-sm" href="{{ path('subcategory_list') }}">Retour</a>
+            {{ form_end(Form) }}
+        </div>
+    </section>
+{% endblock %}
