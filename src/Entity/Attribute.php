@@ -19,7 +19,7 @@ class Attribute
     #[ORM\Column(type: 'string', length: 255)]
     private $value;
 
-    #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'attributes')]
+    #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'attribute')]
     #[ORM\JoinColumn(nullable: false)]
     private $product;
 

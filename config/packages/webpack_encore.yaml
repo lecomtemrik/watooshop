@@ -4,7 +4,7 @@ webpack_encore:
     # If multiple builds are defined (as shown below), you can disable the default build:
     # output_path: false
 
-    # Set attributes that will be rendered on all script and link tags
+    # Set attribute that will be rendered on all script and link tags
     script_attributes:
         defer: true
         # Uncomment (also under link_attributes) if using Turbo Drive

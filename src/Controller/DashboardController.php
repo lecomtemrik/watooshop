@@ -9,11 +9,15 @@ use App\Entity\Review;
 use App\Entity\SubCategory;
 use App\Entity\User;
 use App\Form\AsinFormType;
+use App\Form\AttributeFormType;
 use App\Form\CategoryFormType;
 use App\Form\RegistrationFormType;
+use App\Form\ReviewFormType;
 use App\Form\SubCategoryFormType;
+use App\Repository\AttributeRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use App\Repository\ReviewRepository;
 use App\Repository\SubCategoryRepository;
 use App\Repository\UserRepository;
 use App\Service\AmazonApi;
@@ -73,7 +77,7 @@ class DashboardController extends AbstractController
             $entityManager->flush();
 
         }
-        return $this->render('dashboard/category/add_category.html.twig', [
+        return $this->render('dashboard/category/add_review.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
@@ -222,6 +226,73 @@ class DashboardController extends AbstractController
         return $this->renderForm('dashboard/product/edit.html.twig', [
             'product' => $product,
             'Form' => $form,
+        ]);
+    }
+
+    #[Route('/attribute-list', name: 'attribute_list')]
+    public function attributeList(Request $request, AttributeRepository $attributeRepository): Response
+    {
+        $attributes = $attributeRepository->findAll();
+        return $this->render('dashboard/attribute/attribute_list.html.twig', [
+            'attributes' => $attributes,
+        ]);
+    }
+
+    #[Route('/add-attribute', name: 'add_attribute')]
+    public function addAttribute(Request $request): Response
+    {
+        $form = $this->createForm(AttributeFormType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->doctrine->getManager();
+            $attribute = new Attribute();
+            $attribute->setName($form->getData()->getName());
+            $attribute->setValue($form->getData()->getValue());
+            $attribute->setState($form->getData()->getState());
+            $attribute->setProduct($form->getData()->getProduct());
+            $entityManager->persist($attribute);
+            $entityManager->flush();
+
+        }
+        return $this->render('dashboard/attribute/add_review.html.twig', [
+            'Form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/review-list', name: 'review_list')]
+    public function reviewList(Request $request, ReviewRepository $reviewRepository): Response
+    {
+        $reviews = $reviewRepository->findAll();
+        return $this->render('dashboard/review/review_list.html.twig', [
+            'reviews' => $reviews,
+        ]);
+    }
+
+    #[Route('/add-review', name: 'add_review')]
+    public function addReview(Request $request): Response
+    {
+        $form = $this->createForm(ReviewFormType::class);
+        $form->handleRequest($request);
+        dump($form);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->doctrine->getManager();
+            $review = new Review();
+            $review->setTitle($form->getData()->getTitle());
+            $review->setBody($form->getData()->getBody());
+            $review->setRating($form->getData()->getRating());
+            $review->setCountry($form->getData()->getCountry());
+            $review->setDate($form->getData()->getDate());
+            $review->setProfileName($form->getData()->getProfileName());
+            $review->setProfilePicture($form->getData()->getProfilePicture());
+            $review->setProduct($form->getData()->getProduct());
+            $entityManager->persist($review);
+            $entityManager->flush();
+
+        }
+        return $this->render('dashboard/review/add_review.html.twig', [
+            'Form' => $form->createView(),
         ]);
     }
 
