@@ -255,10 +255,40 @@ class DashboardController extends AbstractController
             $entityManager->flush();
 
         }
-        return $this->render('dashboard/attribute/add_review.html.twig', [
+        return $this->render('dashboard/attribute/add_attribute.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
+
+    #[Route('/delete-attribute/{id}', name: 'delete_attribute', methods: ['POST'])]
+    public function deleteAttribute(Request $request, Attribute $attribute, AttributeRepository $attributeRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$attribute->getId(), $request->request->get('_token'))) {
+            $attributeRepository->remove($attribute);
+        }
+
+        return $this->redirectToRoute('attribute_list', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/edit-attribute/{id}', name: 'edit_attribute', methods: ['GET', 'POST'])]
+    public function editAttribute(Request $request, Attribute $attribute, AttributeRepository $attributeRepository): Response
+    {
+        $form = $this->createForm(AttributeFormType::class, $attribute);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $attributeRepository->add($attribute);
+            return $this->redirectToRoute('attribute_list', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('dashboard/attribute/edit.html.twig', [
+            'attribute' => $attribute,
+            'Form' => $form,
+        ]);
+    }
+
+
+
 
     #[Route('/review-list', name: 'review_list')]
     public function reviewList(Request $request, ReviewRepository $reviewRepository): Response
@@ -274,7 +304,6 @@ class DashboardController extends AbstractController
     {
         $form = $this->createForm(ReviewFormType::class);
         $form->handleRequest($request);
-        dump($form);
         if ($form->isSubmitted() && $form->isValid()) {
 
             $entityManager = $this->doctrine->getManager();

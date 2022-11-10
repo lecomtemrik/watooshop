@@ -5,9 +5,12 @@ namespace App\Form;
 use App\Entity\Attribute;
 use App\Entity\Product;
 use Cassandra\Tinyint;
+use Doctrine\DBAL\Types\BooleanType;
+use phpDocumentor\Reflection\Types\Boolean;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,7 +28,10 @@ class AttributeFormType extends AbstractType
             ->add('value', TextType::class, [
                 'attr' => ['placeholder' => 'Value']
             ])
-            ->add('state', NumberType::class, [
+            ->add('state', ChoiceType::class, [
+                'choices' => [
+                'true' => '1',
+                'false' => '0'],
                 'attr' => ['placeholder' => 'State']
             ])
             ->add('product', EntityType::class, [
