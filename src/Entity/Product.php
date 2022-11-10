@@ -56,7 +56,7 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Attribute::class, orphanRemoval: true)]
     private $attributes;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Review::class)]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Review::class, orphanRemoval: true)]
     private $reviews;
 
     #[ORM\Column(type: 'string', length: 255)]

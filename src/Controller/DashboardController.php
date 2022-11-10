@@ -201,7 +201,6 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    //@todo supprimer review + attributes en même temps
     #[Route('/delete-product/{id}', name: 'delete_product', methods: ['POST'])]
     public function deleteProduct(Request $request, Product $product, ProductRepository $productRepository): Response
     {
@@ -348,9 +347,6 @@ class DashboardController extends AbstractController
             'Form' => $form,
         ]);
     }
-
-
-
 
     #[Route('/user-list', name: 'user_list')]
     public function userList(Request $request, UserRepository $userRepository): Response
