@@ -287,9 +287,6 @@ class DashboardController extends AbstractController
         ]);
     }
 
-
-
-
     #[Route('/review-list', name: 'review_list')]
     public function reviewList(Request $request, ReviewRepository $reviewRepository): Response
     {
@@ -324,6 +321,36 @@ class DashboardController extends AbstractController
             'Form' => $form->createView(),
         ]);
     }
+
+    #[Route('/delete-review/{id}', name: 'delete_review', methods: ['POST'])]
+    public function deleteReview(Request $request, Review $review, ReviewRepository $reviewRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$review->getId(), $request->request->get('_token'))) {
+            $reviewRepository->remove($review);
+        }
+
+        return $this->redirectToRoute('review_list', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/edit-review/{id}', name: 'edit_review', methods: ['GET', 'POST'])]
+    public function editReview(Request $request, Review $review, ReviewRepository $reviewRepository): Response
+    {
+        $form = $this->createForm(ReviewFormType::class, $review);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $reviewRepository->add($review);
+            return $this->redirectToRoute('review_list', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('dashboard/review/edit.html.twig', [
+            'review' => $review,
+            'Form' => $form,
+        ]);
+    }
+
+
+
 
     #[Route('/user-list', name: 'user_list')]
     public function userList(Request $request, UserRepository $userRepository): Response
