@@ -77,7 +77,7 @@ class DashboardController extends AbstractController
             $entityManager->flush();
 
         }
-        return $this->render('dashboard/category/add_review.html.twig', [
+        return $this->render('dashboard/category/add_category.html.twig', [
             'Form' => $form->createView(),
         ]);
     }
