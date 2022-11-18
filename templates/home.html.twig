@@ -120,119 +120,27 @@
             </div>
             <div class="swiper mt-8">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
 
-                                <h3 class="font-bold">Smart Watch</h3>
+                    {% for product in products %}
+                        {% if product.rank.title == "Meilleure vente" %}
+
+                            <div class="swiper-slide">
+                                <a href="#" class="block">
+                                    <div>
+                                        <p class="text-xs text-indigo-500">{{ product.brand }}</p>
+
+                                        <h3 class="font-bold">{{ product.title }}</h3>
+                                    </div>
+
+                                    <img alt="Smart Watch" src="{{ product.image }}" class="w-full object-contain" style="height: 300px"/>
+
+                                    <p class="mt-1 text-sm font-medium text-gray-700">{{ product.price }} €</p>
+                                </a>
                             </div>
 
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://m.media-amazon.com/images/I/91t-OJiZy3S.jpg"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
+                        {% endif %}
+                    {% endfor %}
 
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1661603756/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/259921_z40chb.png/mxw_640,f_auto"
-                                    class="w-full h-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://www.pngmart.com/files/15/Apple-iPhone-12-PNG-HD.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://media.steelseriescdn.com/thumbs/catalogue/products/01047-apex-pro/cd14023f96274bd58e80db4dfd80f4e4.png.350x280_q100_crop-fit_optimize.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://resource.logitech.com/content/dam/gaming/en/products/shroud/shroud-mouse-gallery-1.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://freepngimg.com/thumb/sofa/16-green-sofa-png-image.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="swiper-pagination !relative !bottom-0 mt-12"></div>
@@ -271,119 +179,27 @@
             </div>
             <div class="swiper mt-8">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
 
-                                <h3 class="font-bold">Smart Watch</h3>
+                    {% for product in products %}
+                        {% if product.rank.title == "Meilleur prix" %}
+
+                            <div class="swiper-slide">
+                                <a href="#" class="block">
+                                    <div>
+                                        <p class="text-xs text-indigo-500">{{ product.brand }}</p>
+
+                                        <h3 class="font-bold">{{ product.title }}</h3>
+                                    </div>
+
+                                    <img alt="Smart Watch" src="{{ product.image }}" class="w-full object-contain" style="height: 300px"/>
+
+                                    <p class="mt-1 text-sm font-medium text-gray-700">{{ product.price }} €</p>
+                                </a>
                             </div>
 
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://m.media-amazon.com/images/I/91t-OJiZy3S.jpg"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
+                        {% endif %}
+                    {% endfor %}
 
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1661603756/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/259921_z40chb.png/mxw_640,f_auto"
-                                    class="w-full h-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://www.pngmart.com/files/15/Apple-iPhone-12-PNG-HD.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://media.steelseriescdn.com/thumbs/catalogue/products/01047-apex-pro/cd14023f96274bd58e80db4dfd80f4e4.png.350x280_q100_crop-fit_optimize.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://resource.logitech.com/content/dam/gaming/en/products/shroud/shroud-mouse-gallery-1.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://freepngimg.com/thumb/sofa/16-green-sofa-png-image.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="swiper-pagination !relative !bottom-0 mt-12"></div>
@@ -455,119 +271,27 @@
             </div>
             <div class="swiper mt-8">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
 
-                                <h3 class="font-bold">Smart Watch</h3>
+                    {% for product in products %}
+                        {% if product.rank.title == "Meilleure qualité" %}
+
+                            <div class="swiper-slide">
+                                <a href="#" class="block">
+                                    <div>
+                                        <p class="text-xs text-indigo-500">{{ product.brand }}</p>
+
+                                        <h3 class="font-bold">{{ product.title }}</h3>
+                                    </div>
+
+                                    <img alt="Smart Watch" src="{{ product.image }}" class="w-full object-contain" style="height: 300px"/>
+
+                                    <p class="mt-1 text-sm font-medium text-gray-700">{{ product.price }} €</p>
+                                </a>
                             </div>
 
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://m.media-amazon.com/images/I/91t-OJiZy3S.jpg"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
+                        {% endif %}
+                    {% endfor %}
 
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1661603756/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/259921_z40chb.png/mxw_640,f_auto"
-                                    class="w-full h-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://www.pngmart.com/files/15/Apple-iPhone-12-PNG-HD.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://media.steelseriescdn.com/thumbs/catalogue/products/01047-apex-pro/cd14023f96274bd58e80db4dfd80f4e4.png.350x280_q100_crop-fit_optimize.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://resource.logitech.com/content/dam/gaming/en/products/shroud/shroud-mouse-gallery-1.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://freepngimg.com/thumb/sofa/16-green-sofa-png-image.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="swiper-pagination !relative !bottom-0 mt-12"></div>
@@ -601,119 +325,27 @@
             </div>
             <div class="swiper mt-8">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
 
-                                <h3 class="font-bold">Smart Watch</h3>
+                    {% for product in products %}
+                        {% if product.rank.title == "Rapport qualité/prix" %}
+
+                            <div class="swiper-slide">
+                                <a href="#" class="block">
+                                    <div>
+                                        <p class="text-xs text-indigo-500">{{ product.brand }}</p>
+
+                                        <h3 class="font-bold">{{ product.title }}</h3>
+                                    </div>
+
+                                    <img alt="Smart Watch" src="{{ product.image }}" class="w-full object-contain" style="height: 300px"/>
+
+                                    <p class="mt-1 text-sm font-medium text-gray-700">{{ product.price }} €</p>
+                                </a>
                             </div>
 
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://m.media-amazon.com/images/I/91t-OJiZy3S.jpg"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
+                        {% endif %}
+                    {% endfor %}
 
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1661603756/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/259921_z40chb.png/mxw_640,f_auto"
-                                    class="w-full h-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://www.pngmart.com/files/15/Apple-iPhone-12-PNG-HD.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://media.steelseriescdn.com/thumbs/catalogue/products/01047-apex-pro/cd14023f96274bd58e80db4dfd80f4e4.png.350x280_q100_crop-fit_optimize.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://resource.logitech.com/content/dam/gaming/en/products/shroud/shroud-mouse-gallery-1.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="block">
-                            <div>
-                                <p class="text-xs text-indigo-500">Company</p>
-
-                                <h3 class="font-bold">Smart Watch</h3>
-                            </div>
-
-                            <img
-                                    alt="Smart Watch"
-                                    src="https://freepngimg.com/thumb/sofa/16-green-sofa-png-image.png"
-                                    class="w-full object-contain"
-                                    style="height: 300px"
-                            />
-
-                            <p class="mt-1 text-sm font-medium text-gray-700">$49.99</p>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="swiper-pagination !relative !bottom-0 mt-12"></div>
