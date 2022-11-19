@@ -51,7 +51,19 @@
                                 <div class="text-sm text-gray-600 font-bold mt-4 mb-1">
                                     {{ product.price }} €
                                 </div>
-                                <button class="flex ml-auto text-white bg-gradient-to-r from-cyan-500 to-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-800 rounded">Acheter sur Amazon</button>
+                                <div class="mt-6 sm:-mx-2">
+                                    <div class="inline-flex w-full mt-4 sm:w-auto sm:mx-2 sm:mt-0">
+                                        <a href="{{ path("product", {pathCategory: product.subcategory.category.title,pathSubCategory: product.subcategory.title,pathProduct: product.pathProduct}) }}" class="inline-flex items-center justify-center w-full px-5 py-2 text-gray-700 transition-colors duration-150 transform bg-white border border-gray-200 rounded-lg dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-100 dark:text-white sm:w-auto dark:hover:bg-gray-800 dark:ring-gray-700 focus:ring focus:ring-gray-200 focus:ring-opacity-80">
+                                            Voir plus
+                                        </a>
+                                    </div>
+
+                                    <div class="inline-flex w-full sm:w-auto sm:mx-2">
+                                        <a href="#" class="flex ml-auto text-white bg-gradient-to-r from-cyan-500 to-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-800 rounded"">
+                                        Acheter sur Amazon
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

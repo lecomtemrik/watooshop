@@ -186,10 +186,11 @@ class DashboardController extends AbstractController
             $subCat = $form->getData()['SubCategory'];
             $rank = $form->getData()['Rank'];
             $pathProduct = $form->getData()['pathProduct'];
+            $aLink = $form->getData()['aLink'];
             $entityManager = $this->doctrine->getManager();
             if ($form->get('add')->isClicked()){
                 $product = new Product();
-                $this->amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct);
+                $this->amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct, $aLink);
             }
             if ($form->get('update')->isClicked()){
                 $product = $this->doctrine->getRepository(Product::class)->findOneBy(['asin'=>$asin]);
@@ -384,7 +385,7 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    public function amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct){
+    public function amazonProduct($product, $entityManager, $asin, $subCat, $rank, $pathProduct, $aLink){
         $ApiProduct = $this->AmazonApi->fetchAmazonProduct($asin);
         $product->setTitle($ApiProduct['product']['title']);
         $product->setAsin($asin);
@@ -400,7 +401,7 @@ class DashboardController extends AbstractController
         }else {
             $product->setPrice(0);
         }
-        $product->setAlink('empty');
+        $product->setAlink($aLink);
         if (isset($ApiProduct['product']['description'])){
             $product->setDescription($ApiProduct['product']['description']);
         }else {
@@ -420,7 +421,7 @@ class DashboardController extends AbstractController
         $product->setSubcategory($subCat);
         $product->setRank($rank);
 
-//        Persist attributes if exist
+        //Persist attributes if exist
         if (isset($ApiProduct['product']['attributes'])){
 
             $attrNb = count($ApiProduct['product']['attributes']) - 1;

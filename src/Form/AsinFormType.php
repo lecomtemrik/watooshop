@@ -33,6 +33,9 @@ class AsinFormType extends AbstractType
             ->add('pathProduct', TextType::class, [
                 'attr' => ['placeholder' => 'Path product']
             ])
+            ->add('aLink', TextType::class, [
+                'attr' => ['placeholder' => 'Affiliate link']
+            ])
             ->add('add', SubmitType::class, ['label' => 'Ajouter'])
             ->add('update', SubmitType::class, ['label' => 'Mettre à jour'])
         ;
