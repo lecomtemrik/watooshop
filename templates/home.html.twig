@@ -125,7 +125,7 @@
                         {% if product.rank.title == "Meilleure vente" %}
 
                             <div class="swiper-slide">
-                                <a href="#" class="block">
+                                <a href="{{ path("product", {pathCategory: product.subcategory.category.title,pathSubCategory: product.subcategory.title,pathProduct: product.pathProduct}) }}" target="_blank" class="block">
                                     <div>
                                         <p class="text-xs text-indigo-500">{{ product.brand }}</p>
 
@@ -184,7 +184,7 @@
                         {% if product.rank.title == "Meilleur prix" %}
 
                             <div class="swiper-slide">
-                                <a href="#" class="block">
+                                <a href="{{ path("product", {pathCategory: product.subcategory.category.title,pathSubCategory: product.subcategory.title,pathProduct: product.pathProduct}) }}" target="_blank" class="block">
                                     <div>
                                         <p class="text-xs text-indigo-500">{{ product.brand }}</p>
 
@@ -267,7 +267,7 @@
                         {% if product.rank.title == "Meilleure qualité" %}
 
                             <div class="swiper-slide">
-                                <a href="#" class="block">
+                                <a href="{{ path("product", {pathCategory: product.subcategory.category.title,pathSubCategory: product.subcategory.title,pathProduct: product.pathProduct}) }}" target="_blank"" class="block">
                                     <div>
                                         <p class="text-xs text-indigo-500">{{ product.brand }}</p>
 
@@ -332,7 +332,7 @@
                         {% if product.rank.title == "Rapport qualité/prix" %}
 
                             <div class="swiper-slide">
-                                <a href="#" class="block">
+                                <a href="{{ path("product", {pathCategory: product.subcategory.category.title,pathSubCategory: product.subcategory.title,pathProduct: product.pathProduct}) }}" target="_blank" class="block">
                                     <div>
                                         <p class="text-xs text-indigo-500">{{ product.brand }}</p>
 

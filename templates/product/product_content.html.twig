@@ -1,7 +1,7 @@
 <section class="text-gray-600 body-font overflow-hidden py-10">
     <div class="container px-5 mx-auto">
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
-            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center drop-shadow-lg rounded" src="{{ product.image }}">
+            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-contain object-center drop-shadow-lg rounded" style="width: 450px; height: 450px;" src="{{ product.image }}">
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ product.brand }}</h2>
                 <h3 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ product.title }}</h3>
@@ -28,7 +28,7 @@
                 <p class="leading-relaxed">{{ product.description }}</p>
                 <div class="flex py-10">
                     <span class="title-font font-medium text-2xl text-gray-900">{{ product.price }} €</span>
-                    <button class="flex ml-auto text-white  border-0 py-2 px-6 focus:outline-none bg-blue-600 hover:bg-blue-700 rounded">Acheter sur Amazon</button>
+                    <a href="{{ product.aLink }}" class="flex ml-auto text-white  border-0 py-2 px-6 focus:outline-none bg-blue-600 hover:bg-blue-700 rounded" target="_blank">Acheter sur Amazon</a>
                 </div>
             </div>
         </div>
