@@ -2,28 +2,51 @@
 
 namespace App\Controller;
 
+use App\Entity\Newsletter;
+use App\Form\NewsletterFormType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
-use App\Repository\RankRepository;
-use App\Repository\SubCategoryRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class AccueilController extends AbstractController
 {
-    #[Route('/', name: 'app_accueil')]
-    public function index(CategoryRepository $categoryRepository, ProductRepository $productRepository): Response
+
+    private ManagerRegistry $doctrine;
+
+    public function __construct(ManagerRegistry $doctrine)
     {
-        $session = new Session();
+        $this->doctrine = $doctrine;
+    }
+
+    #[Route('/', name: 'app_accueil')]
+    public function index(CategoryRepository $categoryRepository, ProductRepository $productRepository, Request $request): Response
+    {
+        $session = $request->getSession();
         $session->clear();
         $session->set('categories', $categoryRepository->findAll());
 
         $products = $productRepository->findAll();
 
+        $form = $this->createForm(NewsletterFormType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            dump($form->getErrors());
+            $entityManager = $this->doctrine->getManager();
+            $newsletter = new Newsletter();
+            $newsletter->setEmailAdresse($form->getData()->getEmailAdresse());
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+
+        }
+
         return $this->render('home.html.twig', [
             'products' => $products,
+            'Form' => $form->createView()
         ]);
     }
 }
