@@ -8,14 +8,14 @@
         <div class="container mx-auto px-4 flex flex-col lg:flex-row">
             <!-- left -->
             <div class="hero-left relative lg:w-2/3 rounded-xl bg-white bg-cover p-8 md:p-16 drop-shadow-md">
-                <h1 class="max-w-sm text-secondary text-3xl md:text-4xl font-semibold">Simplifier vos achats en ligne</h1>
-                <p class="max-w-xs pr-10 text-secondary font-semibold mt-8">Gaming, bureautique, maison, jardin <br> On vous guidera dans vos choix</p>
+                <h1 class="max-w-sm text-secondary text-3xl md:text-4xl font-semibold">Quoi acheter sur Amazon ?</h1>
+                <p class="max-w-xs pr-10 text-secondary font-semibold mt-8">C'est simple ! Tout ce que vous cherchez est ici</p>
             </div>
             <!-- right -->
             <div class="hero-right mt-6 lg:mt-0 lg:ml-6 lg:w-1/3 rounded-xl bg-blue-600 bg-cover p-8 md:p-16 drop-shadow-md text-white">
                 <div class="max-w-sm">
-                    <p class="text-3xl md:text-4xl font-semibold">Notre expertise</p>
-                    <p class="mt-8 font-semibold">Un processus de selection fiable pour vous garantir le meilleur selon vos désirs</p>
+                    <p class="text-3xl md:text-4xl font-semibold">Les meilleurs produits d'Amazon !</p>
+                    <p class="mt-8 font-semibold">Nous vous recommandons les meilleurs produits en fonction des ventes, des prix et de leurs qualités</p>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                             <h3 class="text-gray-900 text-lg title-font font-medium">Meilleures ventes</h3>
                         </div>
                         <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Une vaste sélection des meilleures ventes dans l'ensemble du catalogue amazon france</p>
+                            <p class="leading-relaxed text-base">Les meilleures ventes Amazon. Pour ceux qui font confiance aux succès</p>
                             <a href="{{ path('best_sellers') }}" class="mt-3 text-blue-600 inline-flex items-center">Voir
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -56,7 +56,7 @@
                             <h3 class="text-gray-900 text-lg title-font font-medium">Meilleurs prix</h3>
                         </div>
                         <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Acheter vos produits aux meilleurs prix grâce à notre selection sur amazon france</p>
+                            <p class="leading-relaxed text-base">Les meilleurs prix Amazon. Pour ceux qui veulent faire des économies</p>
                             <a href="{{ path('best_price') }}" class="mt-3 text-blue-600 inline-flex items-center">Voir
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -78,7 +78,7 @@
                             <h3 class="text-gray-900 text-lg title-font font-medium">Meilleures qualités</h3>
                         </div>
                         <div class="flex-grow">
-                            <p class="leading-relaxed text-base">La qualité n'a pas de prix pour vous ? Alors c'est ici que vous trouverez votre bonheur</p>
+                            <p class="leading-relaxed text-base">Les meilleures qualités Amazon. Pour ceux qui ne jugent que par la qualité</p>
                             <a href="{{ path('best_quality') }}" class="mt-3 text-blue-600 inline-flex items-center">Voir
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -100,7 +100,7 @@
                             <h3 class="text-gray-900 text-lg title-font font-medium">Meilleurs qualité/prix</h3>
                         </div>
                         <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Le bon compromis entre qualité et prix après un phase de selection nous vous proposons le meilleur de deux monde</p>
+                            <p class="leading-relaxed text-base">Les meilleurs rapport qualités prix. Pour ceux qui veulent faire des économies tout en se faisant plaisir</p>
                             <a href="{{ path('price_quality') }}" class="mt-3 text-blue-600 inline-flex items-center">Voir
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -152,7 +152,7 @@
         <div class="container px-5 py-10 mx-auto">
             <div class="text-center mb-10">
                 <h2 class="sm:text-3xl text-2xl font-medium text-center title-font text-blue-600 mb-4">Toutes les catégories</h2>
-                <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug.</p>
+                <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">Une selection de catégories pour vous guider dans vos recherches</p>
             </div>
             <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
                 {% for category in app.session.get('categories') %}
@@ -221,7 +221,7 @@
                         Responsive
                     </h3>
                     <p class="text-md  text-gray-500 dark:text-gray-300 py-4">
-                        Encompassing today’s website design technology to integrated and build solutions relevant to your business.
+                        Une solution à tout épreuve, nous sommes compatible mobile, tablette, ordinateur etc ...
                     </p>
                 </div>
                 <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 mt-6 bg-white shadow-lg rounded-lg dark:bg-gray-800">
@@ -234,7 +234,7 @@
                         Accéssible
                     </h3>
                     <p class="text-md text-gray-500 dark:text-gray-300 py-4">
-                        Share relevant, engaging, and inspirational brand messages to create a connection with your audience.
+                        Pour les personnes à handicapes nous veillons à faciliter leurs navigations sur notre site
                     </p>
                 </div>
                 <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 mt-6  px-4 py-4 bg-white shadow-lg rounded-lg dark:bg-gray-800">
@@ -247,7 +247,7 @@
                         Rapide
                     </h3>
                     <p class="text-md  text-gray-500 dark:text-gray-300 py-4">
-                        Let us help you level up your search engine game, explore our solutions for digital marketing for your business.
+                        Ne passez pas des heures à chercher "LE" produit Amazon. Nous l'avons fait pour vous
                     </p>
                 </div>
             </div>
@@ -297,7 +297,7 @@
             </div>
             <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
                 <h2 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-blue-600">Vous tenir informer des mises à jour</h2>
-                <p class="mb-8 leading-relaxed">Chillwave portland ugh, knausgaard fam polaroid iPhone. Man braid swag typewriter affogato, hella selvage wolf narwhal dreamcatcher.</p>
+                <p class="mb-8 leading-relaxed">Interressé ? Nous continuons d'améliorer notre solution pour vous recommander le meilleur avec toujours plus de certitude alors inscrivez vous pour connaitre la suite de l'aventure</p>
                 <div class="flex w-full md:justify-start justify-center items-end">
                     <div class="relative mr-4 lg:w-full xl:w-1/2 w-2/4">
                         {#<form method="post" action="{{ path('add_newsletter')}}">#}
