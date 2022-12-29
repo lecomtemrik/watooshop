@@ -17,13 +17,10 @@ class ProductController extends AbstractController
 {
 
     private ManagerRegistry $doctrine;
-    private AmazonApi $AmazonApi;
 
-    public function __construct(ManagerRegistry $doctrine, AmazonApi $amazonApi)
+    public function __construct(ManagerRegistry $doctrine)
     {
         $this->doctrine = $doctrine;
-        $this->AmazonApi = $amazonApi;
-
     }
 
 //    #[Route('/products', name: 'products')]
